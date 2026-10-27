@@ -268,6 +268,7 @@ html.ps-m .ps-fit::before,html.ps-m .ps-fit::after{display:none}
 #ps-join#ps-join .ps-embed .ml-form-embedSubmit button.primary{min-height:56px!important;border:0!important;border-radius:6px!important;background:var(--ps-red)!important;color:var(--ps-white)!important;font:600 19px var(--ps-text)!important;width:100%!important;cursor:pointer;transition:background .2s ease,transform .2s ease!important}
 #ps-join#ps-join .ps-embed .ml-form-embedSubmit button.primary:hover{background:#8f241e!important;transform:translateY(-2px)}
 #ps-join#ps-join .ps-embed .ml-form-embedSubmit button.loading{background:var(--ps-red)!important;min-height:56px!important;border-radius:6px!important;width:100%!important}
+#ps-join#ps-join .ps-embed.ps-done>h2{display:none}
 
 </style>
 </head>
@@ -572,6 +573,16 @@ ml('account', '2745570');
     var f = host.querySelector('form'); if (f) { apply(f); mo.disconnect(); }
   });
   mo.observe(host, { childList: true, subtree: true });
+})();
+// on a successful sign-up, MailerLite shows its own "Almost there" heading: hide ours so they don't stack
+(function () {
+  var host = document.querySelector('.ps-embed'); if (!host) return;
+  function check() {
+    var ok = host.querySelector('.ml-form-successBody');
+    if (ok && getComputedStyle(ok).display !== 'none') { host.classList.add('ps-done'); mo.disconnect(); }
+  }
+  var mo = new MutationObserver(check);
+  mo.observe(host, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
 })();
 
 </script>
