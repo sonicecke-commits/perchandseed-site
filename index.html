@@ -77,6 +77,12 @@ p{margin:0}
 .faq summary{cursor:pointer;font:600 18px/1.4 var(--serif)}
 .faq summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .faq p{margin-top:10px;color:#DCE1EA;max-width:60ch}
+.buy{background:var(--dusk);border-radius:12px;padding:32px;display:grid;gap:16px;justify-items:start;margin-bottom:28px;border:1px solid rgba(242,210,126,.35)}
+.buy[hidden]{display:none}
+.buy .price{font:600 40px/1 var(--serif);color:var(--snow)}
+.buy .small{font-size:14px;color:var(--mist);max-width:60ch}
+.buy .small a{color:var(--snow)}
+.buy .tag{font:600 13px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
 .join{background:var(--dusk);border-radius:12px;padding:32px;display:grid;gap:16px;justify-items:start}
 footer{font-size:14px;color:var(--mist);display:grid;gap:6px;padding-bottom:110px}
 
@@ -211,6 +217,20 @@ footer{font-size:14px;color:var(--mist);display:grid;gap:6px;padding-bottom:110p
       <details><summary>Will it stop every squirrel?</summary><p>No baffle can promise that. Placement does most of the work, so keep the feeder away from anything a squirrel can jump from.</p></details>
       <details><summary>What happens to my email?</summary><p>Only we and our email tool (MailerLite) see it. We never sell or share it.</p></details>
     </div>
+    <!-- Buy box: OFF. It stays hidden until SALE.on is set to true below, after Sam's yes, a checked
+         sample, registration and approved legal pages. Preview it with ?preview=sale. -->
+    <section class="buy" id="buy" hidden aria-labelledby="buy-h">
+      <span class="tag" id="buy-tag">Pre-order</span>
+      <h2 id="buy-h">The wrap-around baffle</h2>
+      <p class="price" id="buy-price">$[PRICE]</p>
+      <ul class="promise" id="buy-facts">
+        <li id="buy-ship">Ships in [X to Y] business days from a US warehouse</li>
+        <li id="buy-fit">Fits poles [A to B] in</li>
+        <li>30-day returns</li>
+      </ul>
+      <a class="btn" id="buy-btn" href="#" rel="noopener">Buy now</a>
+      <p class="small" id="buy-note">Secure checkout by Stripe. Colorado orders include sales tax. Shipping to the [48 contiguous US states and DC]. By ordering you agree to the <a href="terms.html">Terms of sale</a>. See <a href="shipping.html">Shipping</a>, <a href="refunds.html">Refunds and returns</a> and <a href="privacy.html">Privacy</a>.</p>
+    </section>
     <span id="ps-join"></span><div class="join" id="join">
       <h2>Get one first</h2>
       <p class="lede">Leave your email and we'll write once, when it's ready, with the price.</p>
@@ -521,6 +541,24 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){dra
   mo.observe(host, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
 })();
 
+// Buy box switch. Everything here is a placeholder until launch. on:false keeps the box hidden for everyone;
+// ?preview=sale shows it for review only. mode 'preorder' shows the expected ship date; 'instock' doesn't.
+// The visit's ?src= is passed to Stripe as client_reference_id, so sales show which post they came from.
+var SALE = { on: false, mode: 'preorder', link: '', price: '[PRICE]', shipDate: '[EXPECTED SHIP DATE]' };
+(function () {
+  var q = new URLSearchParams(location.search), box = document.getElementById('buy'); if (!box) return;
+  if (!(SALE.on || q.get('preview') === 'sale')) return;
+  box.hidden = false;
+  document.getElementById('buy-price').textContent = '$' + SALE.price;
+  var pre = SALE.mode === 'preorder';
+  document.getElementById('buy-tag').textContent = pre ? 'Pre-order' : 'In stock';
+  document.getElementById('buy-btn').textContent = pre ? 'Pre-order now' : 'Buy now';
+  if (pre) document.getElementById('buy-ship').textContent = 'Expected to ship ' + SALE.shipDate + '. Cancel any time before it ships for a full refund';
+  var src = (q.get('src') || q.get('utm_source') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40);
+  var btn = document.getElementById('buy-btn');
+  if (SALE.on && SALE.link) btn.href = SALE.link + (src ? (SALE.link.indexOf('?') < 0 ? '?' : '&') + 'client_reference_id=' + src : '');
+  else btn.addEventListener('click', function (e) { e.preventDefault(); alert('Preview only: checkout is not switched on.'); });
+})();
 </script>
 </body>
 </html>
