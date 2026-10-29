@@ -220,17 +220,17 @@ footer{font-size:14px;color:var(--mist);display:grid;gap:6px;padding-bottom:110p
     <!-- Buy box: OFF. Hidden until SALE.on is true AND every field is filled. The real off switch is the
          Payment Link itself: keep it deactivated in Stripe until launch day. Preview with ?preview=sale. -->
     <section class="buy" id="buy" hidden aria-labelledby="buy-h">
-      <span class="tag">In stock</span>
+      <span class="tag" id="buy-tag">Preview</span>
       <h2 id="buy-h">The wrap-around baffle</h2>
       <p class="price" id="buy-price">$[PRICE] USD</p>
       <ul class="promise">
         <li id="buy-ship">Ships within [N] business days from Boulder, Colorado</li>
         <li id="buy-fit">Fits round poles [A to B] in</li>
-        <li id="buy-shipcost">[Free US shipping]</li>
+        <li id="buy-shipcost">[Free shipping to the 48 contiguous states and DC]</li>
         <li>30-day returns</li>
       </ul>
       <a class="btn" id="buy-btn" href="#" rel="noopener">Buy now</a>
-      <p class="small">Secure checkout by Stripe. Sales tax is added at checkout for Colorado addresses. Ships to the [48 contiguous US states and DC]. At checkout you'll be asked to agree to the <a href="terms.html">Terms of sale</a>. See <a href="shipping.html">Shipping</a>, <a href="refunds.html">Refunds and returns</a> and <a href="privacy.html">Privacy</a>.</p>
+      <p class="small">Secure checkout by Stripe. Sales tax is added at checkout for Colorado addresses. Ships to <span id="buy-area">[the 48 contiguous US states and DC]</span>. At checkout you'll be asked to agree to the <a href="terms.html">Terms of sale</a>. See <a href="shipping.html">Shipping</a>, <a href="refunds.html">Refunds and returns</a> and <a href="privacy.html">Privacy</a>.</p>
     </section>
     <span id="ps-join"></span><div class="join" id="join">
       <h2>Get one first</h2>
@@ -545,7 +545,7 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){dra
 // Buy box switch. on:false keeps it hidden; ?preview=sale shows it for review with a dummy button.
 // It also refuses to go live while any field is empty or still a [placeholder].
 // The visit's ?src= is kept for the session and passed to Stripe as client_reference_id.
-var SALE = { on: false, link: '', price: '', shipDays: '', fit: '', shipCost: 'Free US shipping', area: '' };
+var SALE = { on: false, link: '', price: '', shipDays: '', fit: '', shipCost: '', area: '' };
 (function () {
   var q = new URLSearchParams(location.search), box = document.getElementById('buy'); if (!box) return;
   var src = (q.get('src') || q.get('utm_source') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40);
@@ -559,7 +559,9 @@ var SALE = { on: false, link: '', price: '', shipDays: '', fit: '', shipCost: 'F
     document.getElementById('buy-ship').textContent = 'Ships within ' + SALE.shipDays + ' business days from Boulder, Colorado';
     document.getElementById('buy-fit').textContent = 'Fits round poles ' + SALE.fit;
     document.getElementById('buy-shipcost').textContent = SALE.shipCost;
+    document.getElementById('buy-area').textContent = SALE.area;
   }
+  if (live) document.getElementById('buy-tag').textContent = 'In stock';
   var btn = document.getElementById('buy-btn');
   if (live) btn.href = SALE.link + (src ? (SALE.link.indexOf('?') < 0 ? '?' : '&') + 'client_reference_id=' + src : '');
   else btn.addEventListener('click', function (e) { e.preventDefault(); alert('Preview only: checkout is not switched on.'); });
