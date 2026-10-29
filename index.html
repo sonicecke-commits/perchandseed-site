@@ -3,342 +3,218 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Perch &amp; Seed, Up close</title><meta name="description" content="A squirrel baffle that wraps around the pole you already have. Join the Perch and Seed waitlist."><meta property="og:title" content="Perch &amp; Seed, the wrap-around squirrel baffle"><meta property="og:image" content="https://res.cloudinary.com/ktsn1a7m/image/upload/v1793092184/perch-seed/page/share-card.jpg"><meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Perch & Seed is a squirrel baffle that wraps around the pole you already have, so the feeder never comes down. Join the free waitlist.">
+<title>Perch &amp; Seed, the wrap-around squirrel baffle</title>
+<meta name="description" content="Perch &amp; Seed is a squirrel baffle that wraps around the pole you already have, so the feeder never comes down. Join the free waitlist.">
+<meta property="og:title" content="Perch &amp; Seed, the wrap-around squirrel baffle"><meta property="og:image" content="https://res.cloudinary.com/ktsn1a7m/image/upload/v1793092184/perch-seed/page/share-card.jpg"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Public+Sans:wght@400;600&display=swap">
 <style>
-/* Palette: winter dusk, matched to the brand videos (dusk navy, snow, gold highlight, cardinal-red action). Up close, v2: a winter window opens to the edges, then the baffle is fitted in front of you as you scroll, squirrel and all.
-   Every class is prefixed ps- so it can live inside MailerLite code blocks without clashing. */
+/* Layout: one sticky full-screen canvas inside a tall scroll track; copy sits in a left column (desktop) or a bottom panel (phone); normal sections follow the film. Single dark look, the brand's winter dusk. */
 :root{
-  --ps-stone:#eceef0; --ps-ink:#13203a; --ps-soft:#3d4757; --ps-spruce:#1d2f4e; --ps-night:#0f1a2c;
-  --ps-leaf:#3b7a46; --ps-red:#ad2f27; --ps-snow:#f7f8f6; --ps-gold:#f2d27e; --ps-white:#ffffff;
-  --ps-display:"Fraunces", Georgia, serif; --ps-text:"Public Sans", system-ui, sans-serif;
-  --ps-h1:clamp(40px, 3.3vw, 56px); --ps-big:clamp(48px, 6vw, 100px); --ps-h2:clamp(34px, 3.4vw, 54px); --ps-lead:clamp(21px, 1.8vw, 26px); --ps-body:19px; --ps-small:16px;
-  --ps-m:32px;
+  --night:#0F1A2C; --dusk:#1D2F4E; --snow:#ECEEF0; --ink:#13203A; --gold:#F2D27E; --red:#AD2F27; --mist:#AEB8CB;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
 }
-@media (max-width:900px){:root{--ps-m:20px;--ps-body:18px}}
 *{box-sizing:border-box}
-html{color-scheme:light}
-body{margin:0;background:var(--ps-stone);color:var(--ps-ink);font:400 var(--ps-body)/1.55 var(--ps-text)}
-.ps img,.ps video,.ps svg{display:block;max-width:100%}
-.ps a{color:inherit}
-.ps :focus-visible{outline:3px solid var(--ps-red);outline-offset:3px}
-.ps h1,.ps h2,.ps h3{margin:0;font-family:var(--ps-display);font-weight:600;letter-spacing:-0.025em;line-height:.98;text-wrap:balance}
-.ps p{margin:0}
-.ps-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.ps-pad{padding-left:max(var(--ps-m), env(safe-area-inset-left, 0px));padding-right:max(var(--ps-m), env(safe-area-inset-right, 0px))}
-.ps-btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border:0;border-radius:6px;background:var(--ps-red);color:var(--ps-white);font:600 var(--ps-body) var(--ps-text);text-decoration:none;cursor:pointer;transition:background .2s ease, transform .2s ease}
-.ps-btn:hover{background:#8f241e;transform:translateY(-2px)}
-.ps-btn:active{transform:translateY(1px)}
+html{background:var(--night)}
+body{background:var(--night);color:var(--snow);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
 
-/* 1. hero: the window onto a winter feeder opens to the edges */
-.ps-win{position:relative;height:100svh;min-height:600px;overflow:clip;background:var(--ps-stone)}
-.ps-pic{position:absolute;inset:0;animation:ps-open 1.7s cubic-bezier(.65,0,.2,1) .4s both}
-.ps-frame{position:absolute;inset:0;overflow:clip}
-.ps-pic img{width:100%;height:100%;object-fit:cover;object-position:62% 50%}
-@keyframes ps-frame{from{clip-path:inset(3svh 2.4vw 3svh 2.4vw round 160px 160px 18px 18px)}to{clip-path:inset(0 0 0 0 round 0 0 0 0)}}
-@keyframes ps-zoom{from{transform:scale(1.07)}to{transform:none}}
-@supports (animation-timeline:view()){
-  .ps-frame{animation:ps-frame linear both;animation-timeline:view();animation-range:exit 0% exit 45%}
-  .ps-frame img{animation:ps-zoom linear both;animation-timeline:view();animation-range:exit 0% exit 60%}
-  .ps-win .ps-top{padding-top:calc(3svh + 52px);padding-left:max(var(--ps-m), calc(2.4vw + 28px));padding-right:max(var(--ps-m), calc(2.4vw + 28px))}
-  .ps-win .ps-lede{padding-left:max(var(--ps-m), calc(2.4vw + 28px));padding-right:max(var(--ps-m), calc(2.4vw + 28px))}
-}
-@keyframes ps-open{from{clip-path:inset(12svh 38vw 16svh 38vw round 240px 240px 0 0)}to{clip-path:inset(0 0 0 0 round 0 0 0 0)}}
-.ps-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,44,.45) 0%,rgba(15,26,44,0) 22%,rgba(15,26,44,0) 50%,rgba(15,26,44,.72) 100%)}
-.ps-snow{position:absolute;inset:-160px 0 0;pointer-events:none;background-image:radial-gradient(circle,#fff 0 1.6px,transparent 2.4px),radial-gradient(circle,#fff 0 1px,transparent 1.8px);background-size:150px 150px,95px 95px;background-position:0 0,40px 70px;opacity:.7;animation:ps-fall 16s linear infinite}
-@keyframes ps-fall{to{transform:translateY(150px)}}
-@keyframes ps-ink{from{color:var(--ps-ink)}to{color:var(--ps-white)}}
-@keyframes ps-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.ps-top{position:absolute;inset:0 0 auto 0;display:flex;justify-content:space-between;align-items:center;padding-top:20px;z-index:2;color:var(--ps-white);animation:ps-ink 0.5s ease 1.3s both}
-.ps-word{font:600 24px var(--ps-display);letter-spacing:-0.02em;text-decoration:none}
-.ps-top nav{display:flex;gap:28px;font-size:var(--ps-small)}
-.ps-top nav a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
-.ps-lede{position:absolute;inset:auto 0 9svh 0;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;z-index:2;color:var(--ps-white);animation:ps-ink 0.5s ease 1.3s both}
-.ps-lede h1{font-size:clamp(44px,4.4vw,76px);max-width:calc(38vw - 48px)}
-.ps-act{display:grid;gap:20px;justify-items:start;max-width:min(30ch, calc(38vw - 64px));font-size:var(--ps-lead);line-height:1.35}
+.film{position:relative;height:1050vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.brand{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));left:max(20px,env(safe-area-inset-left,0px));font:600 19px/1 var(--serif);letter-spacing:.01em;z-index:3}
+.mark{position:absolute;top:calc(20px + env(safe-area-inset-top,0px));right:max(20px,env(safe-area-inset-right,0px));font:400 12px/1 var(--sans);color:var(--snow);opacity:.75;background:rgba(15,26,44,.45);padding:6px 9px;border-radius:999px;z-index:3}
 
-/* 2. fitting: the baffle closes round the pole as you scroll */
-.ps-fit{background:var(--ps-night);color:var(--ps-snow);padding-block:120px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;gap:40px 72px}
-.ps-fit-copy{display:grid;gap:28px}
-.ps-fit h2{font-size:var(--ps-big)}
-.ps-steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;max-width:36ch}
-.ps-steps li{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:baseline;padding:14px 18px;border-radius:8px;background:rgba(255,255,255,.06);color:#c9d2e0}
-.ps-steps li b{font:600 var(--ps-lead)/1.1 var(--ps-display);color:var(--ps-white)}
-.ps-film{margin:0;border-radius:10px;overflow:hidden;background:#0f1729;aspect-ratio:1/1}
-.ps-film video,.ps-film img{width:100%;height:100%;object-fit:cover}
-.ps-fit{position:relative}
-.ps-steps label{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:baseline;padding:14px 18px;border-radius:8px;cursor:pointer;transition:background .25s ease,color .25s ease}
-.ps-steps li{display:block;padding:0}
-.ps-steps label:hover{background:rgba(255,255,255,.1)}
-.ps-hint{font-size:var(--ps-small);color:#c9d2e0}
-.ps-play{color:var(--ps-gold);text-decoration:underline;text-underline-offset:4px;cursor:pointer;margin-left:6px}
-.ps-film{position:relative}
-.ps-st{position:absolute;inset:0;opacity:0;transition:opacity .45s cubic-bezier(.16,1,.3,1)}
-.ps-film video{transition:opacity .45s ease}
-#ps-v1:checked~.ps-film .ps-st1,#ps-v2:checked~.ps-film .ps-st2,#ps-v3:checked~.ps-film .ps-st3{opacity:1}
-#ps-v1:checked~.ps-film video,#ps-v2:checked~.ps-film video,#ps-v3:checked~.ps-film video{opacity:0}
-#ps-v1:checked~.ps-fit-copy li:nth-child(1) label,#ps-v2:checked~.ps-fit-copy li:nth-child(2) label,#ps-v3:checked~.ps-fit-copy li:nth-child(3) label{background:var(--ps-snow);color:var(--ps-ink)}
-#ps-v1:checked~.ps-fit-copy li:nth-child(1) b,#ps-v2:checked~.ps-fit-copy li:nth-child(2) b,#ps-v3:checked~.ps-fit-copy li:nth-child(3) b{color:var(--ps-red)}
-#ps-v1:focus-visible~.ps-fit-copy li:nth-child(1) label,#ps-v2:focus-visible~.ps-fit-copy li:nth-child(2) label,#ps-v3:focus-visible~.ps-fit-copy li:nth-child(3) label,#ps-v0:focus-visible~.ps-fit-copy .ps-play{outline:3px solid var(--ps-gold);outline-offset:3px}
-.ps-hots{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .4s ease .2s}
-#ps-v3:checked~.ps-film .ps-hots{opacity:1;visibility:visible}
-.ps-dot{position:absolute;z-index:2;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
-.ps-dot::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--ps-gold);box-shadow:0 0 0 6px rgba(242,210,126,.28);animation:ps-pulse 2.4s ease-in-out infinite}
-@keyframes ps-pulse{50%{box-shadow:0 0 0 11px rgba(242,210,126,.08)}}
-#ps-h1:checked~label[for=ps-h1]::before,#ps-h2:checked~label[for=ps-h2]::before,#ps-h3:checked~label[for=ps-h3]::before{background:var(--ps-white);animation:none}
-#ps-h1:focus-visible~label[for=ps-h1],#ps-h2:focus-visible~label[for=ps-h2],#ps-h3:focus-visible~label[for=ps-h3]{outline:3px solid var(--ps-gold);outline-offset:2px}
-.ps-tip{display:none;position:absolute;z-index:4;left:16px;right:16px;bottom:16px;background:var(--ps-snow);color:var(--ps-ink);padding:14px 18px;border-radius:8px;font-size:16px;line-height:1.45}
-.ps-tip b{font:600 18px/1.2 var(--ps-display);margin-right:4px}
-.ps-x{color:var(--ps-red);text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-left:6px;white-space:nowrap}
-#ps-h1:checked~.ps-t1,#ps-h2:checked~.ps-t2,#ps-h3:checked~.ps-t3{display:block}
-.ps-fit input.ps-sr{position:fixed!important;top:50%!important;left:50%!important}
+.beat{position:absolute;left:max(24px,6vw);top:50%;width:min(440px,36vw);transform:translateY(-50%);display:grid;gap:14px;opacity:0;pointer-events:none;z-index:2;text-shadow:0 1px 18px rgba(8,14,26,.55)}
+.beat.on{pointer-events:auto}
+.beat h1{font-size:clamp(40px,5.4vw,72px);line-height:1.02}
+.beat h2{font-size:clamp(30px,3.6vw,48px);line-height:1.06}
+.beat p{font-size:18px;color:#DCE1EA;max-width:36ch}
+.beat .small{font-size:15px;color:var(--mist)}
+.steps{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;align-items:baseline;gap:8px;font:400 22px/1.2 var(--serif);color:rgba(236,238,240,.42);transition:color .25s ease;counter-increment:s}
+.steps li::before{content:counter(s);font:600 14px/1 var(--sans);color:inherit;border:1px solid currentColor;border-radius:50%;width:26px;height:26px;display:grid;place-items:center}
+.steps li.on{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;border-radius:999px;background:var(--red);color:#fff;font:600 17px/1 var(--sans);text-decoration:none;box-shadow:0 8px 30px rgba(173,47,39,.35);width:max-content}
+.btn:focus-visible,.pin:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.promise{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--mist);list-style:none;margin:0;padding:0}
 
-/* 3. winter pictures */
-.ps-winter{padding-block:120px 0}
-.ps-winter header{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 48px;align-items:end;margin-bottom:40px}
-.ps-winter h2{font-size:var(--ps-h2)}
-.ps-winter header p{max-width:46ch;font-size:var(--ps-lead);line-height:1.35}
-.ps-row{display:grid;grid-template-columns:7fr 4fr 5fr;gap:12px;align-items:stretch;height:min(62svh, 560px)}
-.ps-row figure{margin:0;overflow:hidden;border-radius:8px;position:relative}
-.ps-row img,.ps-row video{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
-.ps-row figure:hover img,.ps-row figure:hover video{transform:scale(1.04)}
-.ps-row .ps-r3 img{object-position:100% 45%}
-.ps-row figcaption{position:absolute;left:14px;bottom:14px;background:var(--ps-snow);color:var(--ps-ink);font-size:var(--ps-small);padding:6px 12px;border-radius:4px}
+.parts{position:absolute;right:max(24px,5vw);top:50%;transform:translateY(-50%);list-style:none;margin:0;padding:0;display:grid;gap:14px;z-index:2;opacity:0;transition:opacity .3s ease}
+.parts li{display:flex;align-items:center;gap:10px;font:400 14px/1 var(--sans);color:rgba(236,238,240,.5);justify-content:flex-end}
+.parts li::after{content:"";width:10px;height:10px;border-radius:50%;border:1px solid currentColor}
+.parts li.on{color:var(--gold)}
+.parts li.on::after{background:var(--gold)}
 
-/* 4. facts */
-.ps-facts{padding-block:120px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px 72px;align-items:center}
-.ps-facts h2{font-size:var(--ps-h2);margin-bottom:28px}
-.ps-plate{margin:0;position:relative;border-radius:8px;overflow:hidden;background:var(--ps-stone)}
-.ps-plate img{width:100%;height:auto;display:block;mix-blend-mode:multiply}
-.ps-plate figcaption{padding:12px 16px 14px;font-size:var(--ps-small);color:var(--ps-soft);background:var(--ps-white)}
-.ps-list{list-style:none;margin:0;padding:0;counter-reset:f}
-.ps-list{display:grid;gap:10px}
-.ps-list li{display:grid;gap:4px;padding:20px 24px;border-radius:8px;counter-increment:f}
-.ps-list li:nth-child(odd){background:#e0e3e8}
-.ps-list b{font:600 clamp(24px,2.2vw,32px)/1.15 var(--ps-display)}
-.ps-list span{color:var(--ps-soft)}
-/* drifting plates */
-.ps-birds{background:var(--ps-spruce);color:var(--ps-snow);padding-block:96px 104px;overflow:hidden}
-.ps-birds h2{font-size:var(--ps-h2);margin-bottom:12px}
-.ps-birds p{max-width:52ch;color:#c9d2e0;margin-bottom:44px}
-.ps-clip{overflow:hidden;border-radius:6px}
-.ps-track{display:flex;gap:20px;width:max-content;animation:ps-drift 70s linear infinite}
-.ps-birds:hover .ps-track,.ps-rest .ps-track,.ps-rest .ps-snow,.ps-rest .ps-fall2{animation-play-state:paused}
-.ps-track figure{margin:0;width:240px;flex:0 0 auto}
-.ps-track img{width:240px;height:300px;object-fit:cover;border-radius:6px;background:var(--ps-stone);display:block}
-.ps-track figcaption{margin-top:10px;font-size:var(--ps-small);color:#c9d2e0}
-@keyframes ps-drift{to{transform:translateX(calc(-50% - 10px))}}
+.hint{position:absolute;left:50%;bottom:calc(26px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);font:400 13px/1 var(--sans);color:var(--mist);display:grid;justify-items:center;gap:10px;z-index:2}
+.hint i{display:block;width:1px;height:34px;background:linear-gradient(var(--gold),transparent);transform-origin:top}
+@media (prefers-reduced-motion:no-preference){.hint i{animation:drop 1.8s ease-in-out infinite}}
+@keyframes drop{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 
-/* 5. the climb, over the squirrel photo */
-.ps-use{position:relative;min-height:92svh;display:grid;align-items:end;color:var(--ps-white)}
-.ps-use > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.ps-panel{position:relative;margin:0 0 40px;background:var(--ps-ink);padding:32px;border-radius:10px;max-width:620px;display:grid;gap:18px}
-.ps-panel h2{font-size:var(--ps-h2)}
-.ps-panel ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
-.ps-panel li{display:grid;grid-template-columns:7.5em 1fr;gap:14px;align-items:baseline}
-.ps-panel li b{font:600 var(--ps-lead)/1.1 var(--ps-display);color:var(--ps-gold)}
-.ps-panel small{font-size:var(--ps-small);color:#d6dbe4}
+.pin{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;background:var(--red);color:#fff;font:600 16px/1 var(--sans);text-decoration:none;box-shadow:0 10px 30px rgba(5,9,19,.45);transition:opacity .3s ease,transform .3s ease}
+.pin.hide{opacity:0;transform:translateY(12px);pointer-events:none}
 
-/* 6. join, on the snow */
-.ps-join{position:relative;padding-block:120px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px 64px;align-items:center;overflow:hidden}
-.ps-join > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:80% 30%}
-.ps-join::before{content:"";position:absolute;inset:0;background:rgba(15,26,44,.35);z-index:1}
-.ps-box{position:relative;z-index:2;display:grid;gap:16px;background:var(--ps-snow);padding:36px;border-radius:10px}
-.ps-box h2{font-size:var(--ps-h2)}
-.ps-field{min-height:56px;padding:0 16px;border:1.5px solid #868d99;border-radius:6px;background:var(--ps-white);color:var(--ps-ink);font:400 var(--ps-body) var(--ps-text)}
-.ps-check{display:flex;gap:12px;align-items:flex-start;font-size:var(--ps-small)}
-.ps-check input{width:22px;height:22px;margin-top:2px;accent-color:var(--ps-spruce)}
-.ps-promise{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:var(--ps-small);color:var(--ps-soft)}
-.ps-sent{color:var(--ps-spruce);font-weight:600}
-.ps-faq{position:relative;z-index:2;display:grid;gap:14px}
-.ps-faq div{background:rgba(15,26,44,.82);color:var(--ps-white);border-radius:8px;padding:18px 22px}
-.ps-faq h3{font:600 var(--ps-lead) var(--ps-text);margin-bottom:4px}
+/* after the film */
+.after{background:var(--night)}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px)) max(20px,env(safe-area-inset-right,0px));padding-block:88px;display:grid;gap:28px}
+.after h2{font-size:clamp(30px,3.6vw,46px);line-height:1.08}
+.lede{font-size:19px;color:#DCE1EA;max-width:58ch}
+.birds{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.birds figure{margin:0;display:grid;gap:8px}
+.birds img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:var(--snow)}
+.birds figcaption{font-size:14px;color:var(--mist)}
+.photo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:center}
+.photo img{width:100%;border-radius:8px;aspect-ratio:4/3;object-fit:cover}
+.facts{display:grid;gap:0;border-top:1px solid rgba(236,238,240,.14)}
+.facts div{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid rgba(236,238,240,.14)}
+.facts dt{font:600 20px/1.3 var(--serif);margin:0}
+.facts dd{margin:0;color:#DCE1EA;max-width:56ch}
+.faq{display:grid;gap:10px}
+.faq details{border:1px solid rgba(236,238,240,.16);border-radius:8px;padding:14px 18px}
+.faq summary{cursor:pointer;font:600 18px/1.4 var(--serif)}
+.faq summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.faq p{margin-top:10px;color:#DCE1EA;max-width:60ch}
+.join{background:var(--dusk);border-radius:12px;padding:32px;display:grid;gap:16px;justify-items:start}
+footer{font-size:14px;color:var(--mist);display:grid;gap:6px;padding-bottom:110px}
 
-.ps-foot{padding-block:32px 40px;display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between;font-size:var(--ps-small);color:var(--ps-soft)}
-.ps-foot span{max-width:60ch}.ps-foot a{color:inherit}.ps-foot span+span{font-size:13px;line-height:1.5;color:#5a6372}
-
-@keyframes ps-frame-m{from{clip-path:inset(2svh 3vw 2svh 3vw round 110px 110px 14px 14px)}to{clip-path:inset(0 0 0 0 round 0 0 0 0)}}
-@keyframes ps-open-m{from{clip-path:inset(18svh 12vw 30svh 12vw round 200px 200px 0 0)}to{clip-path:inset(0 0 0 0 round 0 0 0 0)}}
-@media (max-width:900px){
-  .ps-top nav{display:none}
-  .ps-pic{animation-name:ps-open-m}
-  .ps-frame{animation-name:ps-frame-m}
-  .ps-win .ps-top{padding-top:calc(2svh + 40px);padding-left:calc(3vw + 18px);padding-right:calc(3vw + 18px)}
-  .ps-win .ps-lede{padding-left:calc(3vw + 18px);padding-right:calc(3vw + 18px)}
-  .ps-lede{display:grid;gap:20px;inset:auto 0 6svh 0}
-  .ps-lede h1{font-size:10.4vw;max-width:none}
-
-  .ps-fit{grid-template-columns:1fr;padding-block:80px}
-  .ps-fit h2{font-size:12vw}
-  .ps-steps label{padding:10px 14px;grid-template-columns:52px 1fr;font-size:16px}
-  .ps-panel li{grid-template-columns:1fr;gap:2px}
-  .ps-winter header,.ps-facts,.ps-join{grid-template-columns:1fr}
-  .ps-row{grid-template-columns:1fr 1fr;height:auto}
-  .ps-row .ps-r1{grid-column:1 / -1;aspect-ratio:16 / 10}
-  .ps-row .ps-r2,.ps-row .ps-r3{aspect-ratio:3 / 4}
-  .ps-plate{order:2}.ps-track figure{width:180px}.ps-track img{width:180px;height:225px}
-  .ps-panel{margin:0 0 20px;padding:22px}
-  .ps-box{padding:22px}
-}
-@media (max-width:600px){.ps-lede{inset:auto 0 calc(96px + 3svh) 0}.ps-act{position:fixed;left:max(var(--ps-m), env(safe-area-inset-left, 0px));right:max(var(--ps-m), env(safe-area-inset-right, 0px));bottom:16px;max-width:none;justify-items:stretch}.ps-act p{display:none}}
-@media (prefers-reduced-motion:reduce){.ps-pic,.ps-top,.ps-lede,.ps-frame,.ps-frame img,.ps-rise,.ps-row figure{animation:none!important}.ps-snow,.ps-track,.ps-dot::before{animation:none}.ps-clip{overflow-x:auto}}
-/* Motion add-on from the AnimatedWebs thread (CSS only): three-depth snow, starlight behind the fitting scene, heading rises, plate lift, button sweep. Rises use translate so hover transforms still work. */
-/* 1. Snow in three depths. The existing dot layer stays as the mid layer;
-      ::before is the far layer (small, slow), ::after the near layer (big, soft, quicker, sways). */
-.ps-snow::before,.ps-snow::after{content:"";position:absolute;inset:-200px 0 0;pointer-events:none}
-.ps-snow::before{background-image:radial-gradient(circle,#fff 0 .8px,transparent 1.3px),radial-gradient(circle,#fff 0 .7px,transparent 1.2px);background-size:89px 71px,127px 103px;background-position:20px 10px,61px 47px;opacity:.55;animation:ps-fall-far 26s linear infinite}
-.ps-snow::after{background-image:radial-gradient(circle,rgba(255,255,255,.9) 0 2.6px,transparent 4.2px),radial-gradient(circle,rgba(255,255,255,.75) 0 2px,transparent 3.4px);background-size:260px 260px,330px 330px;background-position:30px 40px,170px 190px;filter:blur(1.2px);opacity:.8;animation:ps-fall-near 9s linear infinite,ps-sway 6s ease-in-out infinite alternate}
-@keyframes ps-fall-far{to{transform:translateY(71px)}}
-@keyframes ps-fall-near{to{background-position:30px 300px,170px 520px}}
-@keyframes ps-sway{from{translate:-14px 0}to{translate:14px 0}}
-
-/* 2. Starlight and a faint gold dusk glow behind "Fitted in three moves" */
-.ps-fit{position:relative;isolation:isolate}
-.ps-fit::before,.ps-fit::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
-.ps-fit::before{background-image:radial-gradient(circle,#fff 0 .9px,transparent 1.4px),radial-gradient(circle,#f2d27e 0 1px,transparent 1.6px),radial-gradient(circle,#fff 0 .6px,transparent 1.1px);background-size:137px 113px,293px 241px,211px 173px;background-position:10px 20px,90px 60px,47px 131px;opacity:.55;animation:ps-twinkle 5s ease-in-out infinite alternate}
-.ps-fit::after{background:radial-gradient(ellipse 70% 55% at 66% 100%,rgba(242,210,126,.14),rgba(242,210,126,0) 70%),radial-gradient(circle,#fff 0 .7px,transparent 1.2px) 55px 35px/359px 307px;animation:ps-glow 9s ease-in-out infinite alternate}
-@keyframes ps-twinkle{from{opacity:.25}to{opacity:.7}}
-@keyframes ps-glow{from{opacity:.7}to{opacity:1}}
-
-/* 3. Headings and their lines rise as they scroll into view */
-@supports (animation-timeline:view()){
-  .ps h2,.ps-rise{animation:ps-rise-in linear both;animation-timeline:view();animation-range:entry 5% entry 55%}
-}
-@keyframes ps-rise-in{from{opacity:0;translate:0 28px}to{opacity:1;translate:0 0}}
-
-/* 4. Audubon plates lift and lean on hover, with a warm light on the paper */
-.ps-track figure,.ps-plate{transition:transform .5s cubic-bezier(.22,1,.36,1);position:relative}
-.ps-track figure:hover,.ps-plate:hover{transform:perspective(800px) rotateX(4deg) rotateY(-5deg) translateY(-6px)}
-.ps-track figure::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s ease;background:radial-gradient(circle at 70% 25%,rgba(255,248,225,.35),rgba(255,248,225,0) 55%)}
-.ps-track figure:hover::after{opacity:1}
-
-/* 5. The red button: a soft light sweeps across on hover */
-.ps-btn{position:relative;overflow:hidden}
-.ps-btn::after{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transition:transform .7s ease;pointer-events:none}
-.ps-btn:hover::after{transform:translateX(120%) skewX(-18deg)}
-
-@media (prefers-reduced-motion:reduce){
-  .ps-snow::before,.ps-snow::after,.ps-fit::before,.ps-fit::after,.ps h2,.ps-rise{animation:none!important}
-  .ps-track figure,.ps-plate,.ps-btn::after{transition:none}
-  .ps-track figure:hover,.ps-plate:hover{transform:none}
+@media (max-width:760px){
+  .film{height:1150vh}
+  .beat{left:max(20px,env(safe-area-inset-left,0px));right:max(20px,env(safe-area-inset-right,0px));top:auto;bottom:calc(92px + env(safe-area-inset-bottom,0px));width:auto;transform:none;gap:10px}
+  .beat h1{font-size:40px}
+  .beat h2{font-size:30px}
+  .beat p{font-size:16px}
+  .steps li{font-size:19px}
+  .parts{right:max(16px,env(safe-area-inset-right,0px));top:calc(64px + env(safe-area-inset-top,0px));transform:none;gap:10px}
+  .parts li{font-size:12px}
+  .stage::after{content:"";position:absolute;inset:auto 0 0 0;height:52%;background:linear-gradient(transparent,rgba(9,15,27,.82) 55%);pointer-events:none;z-index:1}
+  .birds{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .photo{grid-template-columns:1fr}
+  .facts div{grid-template-columns:1fr;gap:6px}
+  .hint{display:none}
 }
 
-/* Motion layer for the self-hosted Up close (see motion.js) */
-.ps-sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:block}
-.ps-win .ps-sky{z-index:1}
-.ps-frame img{transition:translate .2s linear;will-change:translate}
-.ps-fit,.ps-join{position:relative;isolation:isolate}
-.ps-fit>.ps-sky{z-index:-1}
-.ps-join>.ps-sky{z-index:1}
-/* word rise */
-.ps-split .ps-w{display:inline-block;overflow:clip;overflow-clip-margin:.12em;vertical-align:top;padding-bottom:.06em}
-.ps-split .ps-w>span{display:inline-block;transform:translateY(105%);opacity:0;transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .6s ease}
-.ps-split.ps-in .ps-w>span{transform:none;opacity:1}
-/* plate tilt and paper light */
-.ps-tilt{transition:transform .5s cubic-bezier(.22,1,.36,1);transform-style:preserve-3d;will-change:transform}
-.ps-tilt::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s ease;
-  background:radial-gradient(circle at var(--lx,50%) var(--ly,30%),rgba(255,248,225,.35),rgba(255,248,225,0) 55%)}
-.ps-tilt:hover::after{opacity:1}
-/* button: light sweep on hover */
-.ps-btn{position:relative;overflow:hidden;transition:background .2s ease,transform .2s ease,translate .25s cubic-bezier(.22,1,.36,1)}
-.ps-btn::after{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transition:transform .7s ease}
-.ps-btn:hover::after{transform:translateX(120%) skewX(-18deg)}
-/* join box: the real sign-up lives on the MailerLite page */
-.ps-box .ps-note{font-size:var(--ps-small);color:var(--ps-soft)}
-.ps-box .ps-btn{width:100%;color:var(--ps-white)}
-.ps-box p.ps-sub{font-size:var(--ps-lead);line-height:1.35}
-@media (prefers-reduced-motion:reduce){.ps-split .ps-w>span{transform:none;opacity:1;transition:none}.ps-tilt,.ps-btn::after{transition:none}}
-/* d5 kit v7 carries the CSS-only add-on; when this script layer runs, the canvas and word split take over */
-html.ps-m .ps h2.ps-split{animation:none!important}
-html.ps-m .ps-fit::before,html.ps-m .ps-fit::after{display:none}
-
-/* MailerLite embedded form, restyled to winter dusk. Its CSS uses #mlb2-N ids, so every rule starts with a doubled #ps-join (beats one id) and uses !important */
-#ps-join#ps-join .ps-embed .ml-form-embedContainer,#ps-join#ps-join .ps-embed .ml-form-embedWrapper,#ps-join#ps-join .ps-embed .ml-form-embedBody,#ps-join#ps-join .ps-embed .ml-form-successBody{background:transparent!important;border:0!important;padding:0!important;margin:0!important;max-width:none!important;width:100%!important;box-shadow:none!important}
-#ps-join#ps-join .ps-embed .ml-form-align-center{text-align:left!important}
-#ps-join#ps-join .ps-embed .ml-form-embedContent h4{display:none!important}
-#ps-join#ps-join .ps-embed .ml-form-embedContent p,#ps-join#ps-join .ps-embed .ml-form-successContent p{font:400 var(--ps-lead)/1.35 var(--ps-text)!important;color:var(--ps-ink)!important;margin:0 0 20px!important;text-align:left!important}
-#ps-join#ps-join .ps-embed .ml-form-successContent h4{font:600 var(--ps-h2)/1 var(--ps-display)!important;color:var(--ps-ink)!important;letter-spacing:-.025em!important;text-align:left!important}
-#ps-join#ps-join .ps-embed label,#ps-join#ps-join .ps-embed .label-description p{font:600 var(--ps-small)/1.4 var(--ps-text)!important;color:var(--ps-ink)!important}
-#ps-join#ps-join .ps-embed .ml-form-checkboxRow .label-description p{font-weight:400!important;color:var(--ps-soft)!important}
-#ps-join#ps-join .ps-embed input.form-control,#ps-join#ps-join .ps-embed select.custom-select{min-height:56px!important;border:1.5px solid #858c86!important;border-radius:6px!important;background:#fff!important;color:var(--ps-ink)!important;font:400 19px var(--ps-text)!important;padding:0 16px!important}
-#ps-join#ps-join .ps-embed input.form-control:focus,#ps-join#ps-join .ps-embed select.custom-select:focus{outline:3px solid var(--ps-red)!important;outline-offset:2px!important;border-color:var(--ps-ink)!important}
-#ps-join#ps-join .ps-embed .ml-form-embedSubmit button.primary{min-height:56px!important;border:0!important;border-radius:6px!important;background:var(--ps-red)!important;color:var(--ps-white)!important;font:600 19px var(--ps-text)!important;width:100%!important;cursor:pointer;transition:background .2s ease,transform .2s ease!important}
-#ps-join#ps-join .ps-embed .ml-form-embedSubmit button.primary:hover{background:#8f241e!important;transform:translateY(-2px)}
-#ps-join#ps-join .ps-embed .ml-form-embedSubmit button.loading{background:var(--ps-red)!important;min-height:56px!important;border-radius:6px!important;width:100%!important}
-#ps-join#ps-join .ps-embed.ps-done>h2{display:none}
-
+/* MailerLite embedded form, restyled for the dark join box. Its CSS uses #mlb2-N ids, so rules start with a doubled #join and use !important */
+#join#join .ml-form-embedContainer,#join#join .ml-form-embedWrapper,#join#join .ml-form-embedBody,#join#join .ml-form-successBody{background:transparent!important;border:0!important;padding:0!important;margin:0!important;max-width:none!important;width:100%!important;box-shadow:none!important}
+#join#join .ml-embedded{width:100%;max-width:520px}
+#join#join .ml-form-align-center{text-align:left!important}
+#join#join .ml-form-embedContent h4,#join#join .ml-form-embedContent p{display:none!important}
+#join#join .ml-form-successContent p{font:400 17px/1.5 var(--sans)!important;color:#DCE1EA!important;margin:0 0 16px!important;text-align:left!important}
+#join#join .ml-form-successContent h4{font:600 34px/1.1 var(--serif)!important;color:var(--snow)!important;text-align:left!important}
+#join#join label,#join#join .label-description p{font:600 15px/1.4 var(--sans)!important;color:var(--snow)!important}
+#join#join .ml-form-checkboxRow .label-description p{font-weight:400!important;color:var(--mist)!important}
+#join#join input.form-control,#join#join select.custom-select{min-height:52px!important;border:1.5px solid #858c86!important;border-radius:8px!important;background:#fff!important;color:var(--ink)!important;font:400 18px var(--sans)!important;padding:0 14px!important}
+#join#join input.form-control:focus,#join#join select.custom-select:focus{outline:3px solid var(--gold)!important;outline-offset:2px!important}
+#join#join .ml-form-embedSubmit button.primary,#join#join .ml-form-embedSubmit button.loading{min-height:54px!important;border:0!important;border-radius:999px!important;background:var(--red)!important;color:#fff!important;font:600 18px var(--sans)!important;width:100%!important;cursor:pointer}
+#join#join .ml-form-embedSubmit button.primary:hover{background:#8f241e!important}
+#join.done>h2,#join.done>.lede{display:none}
 </style>
 </head>
 <body>
-<main class="ps">
-<section class="ps-win" aria-label="Perch and Seed">
-  <div class="ps-pic"><div class="ps-frame"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793093090/perch-seed/page/season-winter.jpg" width="1400" height="935" alt="A black-capped chickadee beside a seed feeder in winter" fetchpriority="high"><canvas class="ps-sky" data-dusk="snow:1,density:1.1" aria-hidden="true"></canvas></div></div>
-  <header class="ps-top ps-pad"><a class="ps-word" href="#top">Perch &amp; Seed</a><nav aria-label="Sections"><a href="#ps-fit">How it goes on</a><a href="#ps-facts">The facts</a><a href="#ps-join">Join the waitlist</a></nav></header>
-  <div class="ps-lede ps-pad">
-    <h1 id="top">The wrap-around squirrel baffle</h1>
-    <div class="ps-act"><p>It goes on the pole you already have. The feeder never comes down.</p><a class="ps-btn" href="#ps-join">Join the waitlist</a></div>
-  </div>
-</section>
 
-<section class="ps-fit ps-pad" id="ps-fit" aria-labelledby="ps-fit-h"><canvas class="ps-sky" data-dusk="stars:1,glow:1,snow:0.35,density:0.8" aria-hidden="true"></canvas>
-  <input class="ps-sr ps-r" type="radio" name="ps-v" id="ps-v0" checked><input class="ps-sr ps-r" type="radio" name="ps-v" id="ps-v1"><input class="ps-sr ps-r" type="radio" name="ps-v" id="ps-v2"><input class="ps-sr ps-r" type="radio" name="ps-v" id="ps-v3">
-  <div class="ps-fit-copy">
-    <h2 id="ps-fit-h">Fitted in three moves</h2>
-    <ol class="ps-steps" id="ps-steps">
-      <li><label for="ps-v1"><b>Open</b><span>It opens up, so it goes on from the side instead of sliding down from the top.</span></label></li>
-      <li><label for="ps-v2"><b>Wrap</b><span>Put it around the pole you already have, below the feeder.</span></label></li>
-      <li><label for="ps-v3"><b>Clip</b><span>Clip it shut. The climb now ends at the baffle.</span></label></li>
+<div class="film" id="film">
+  <div class="stage" id="stage">
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <div class="brand">Perch &amp; Seed</div>
+    <div class="mark">Made with AI · Illustration</div>
+
+    <section class="beat" data-a="-1" data-b="0.075">
+      <h1>The climb ends here.</h1>
+      <p>A squirrel baffle that wraps around the pole you already have. Your feeder stays up.</p>
+    </section>
+    <section class="beat" data-a="0.12" data-b="0.225">
+      <h2>Winter is when your birds lean on the feeder most.</h2>
+      <p>And when nobody wants to take it down in the snow.</p>
+    </section>
+    <section class="beat" data-a="0.245" data-b="0.335">
+      <h2>Then a squirrel finds the pole.</h2>
+    </section>
+    <section class="beat" data-a="0.35" data-b="0.525">
+      <h2>Fitted in three moves.</h2>
+      <ol class="steps">
+        <li data-a="0.355" data-b="0.405">Open it.</li>
+        <li data-a="0.405" data-b="0.46">Wrap the pole.</li>
+        <li data-a="0.46" data-b="0.53">Clip it shut.</li>
+      </ol>
+      <p class="small">No ladder. The feeder never comes down.</p>
+    </section>
+    <section class="beat" data-a="0.545" data-b="0.635">
+      <h2>The climb now ends at the baffle.</h2>
+    </section>
+    <section class="beat" data-a="0.675" data-b="0.73">
+      <h2>The collar</h2>
+      <p>It sits around the pole you already have.</p>
+    </section>
+    <section class="beat" data-a="0.73" data-b="0.78">
+      <h2>The seam and clips</h2>
+      <p>It opens along this seam, so it goes on from the side. Two clips hold it shut.</p>
+    </section>
+    <section class="beat" data-a="0.78" data-b="0.83">
+      <h2>The edge</h2>
+      <p>A climbing squirrel meets this and can't get round it.</p>
+    </section>
+    <section class="beat" data-a="0.85" data-b="0.915">
+      <h2>It stops the climb, not the jump.</h2>
+      <p>Keep the feeder 8 to 10 ft from fences, roofs and branches, with the top of the baffle 4 to 5 ft off the ground.</p>
+      <p class="small">The usual advice from Audubon and Wild Birds Unlimited.</p>
+    </section>
+    <section class="beat" data-a="0.94" data-b="9">
+      <h2>Get one first.</h2>
+      <p>Leave your email and we'll write once, when it's ready, with the price.</p>
+      <a class="btn" href="#join">Join the waitlist</a>
+      <ul class="promise"><li>Free to join</li><li>No payment taken</li><li>One email when it's ready</li></ul>
+    </section>
+
+    <ol class="parts" id="parts" aria-hidden="true">
+      <li data-a="0.675" data-b="0.73">The collar</li>
+      <li data-a="0.73" data-b="0.78">The seam and clips</li>
+      <li data-a="0.78" data-b="0.83">The edge</li>
     </ol>
-    <p class="ps-hint">Tap a step to stop on it. <label for="ps-v0" class="ps-play">Play it again</label></p>
+    <div class="hint" id="hint"><span>Scroll</span><i></i></div>
   </div>
-  <figure class="ps-film"><video autoplay muted loop playsinline preload="auto" poster="https://res.cloudinary.com/ktsn1a7m/image/upload/baffle-poster.jpg" width="1080" height="1080" aria-label="Animation: the two halves of the baffle wrap around the pole and clip shut, and a cartoon squirrel slides off"><source src="https://res.cloudinary.com/ktsn1a7m/video/upload/baffle-loop-webm.webm" type="video/webm"><source src="https://res.cloudinary.com/ktsn1a7m/video/upload/baffle-loop.mp4" type="video/mp4"></video><img class="ps-st ps-st1" src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793096488/perch-seed/page/baffle-open.jpg" alt="The baffle opened into two halves beside the pole" loading="lazy" width="1080" height="1080"><img class="ps-st ps-st2" src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793096489/perch-seed/page/baffle-wrap.jpg" alt="The two halves closing around the pole" loading="lazy" width="1080" height="1080"><img class="ps-st ps-st3" src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793096489/perch-seed/page/baffle-clip.jpg" alt="The baffle clipped shut around the pole" loading="lazy" width="1080" height="1080">
-    <div class="ps-hots"><input class="ps-sr" type="radio" name="ps-h" id="ps-h0" checked><input class="ps-sr" type="radio" name="ps-h" id="ps-h1"><input class="ps-sr" type="radio" name="ps-h" id="ps-h2"><input class="ps-sr" type="radio" name="ps-h" id="ps-h3"><label class="ps-dot" for="ps-h1" style="left:50%;top:33%"><span class="ps-sr">The collar</span></label><label class="ps-dot" for="ps-h2" style="left:58%;top:57%"><span class="ps-sr">The seam and clips</span></label><label class="ps-dot" for="ps-h3" style="left:14%;top:66%"><span class="ps-sr">The edge</span></label><div class="ps-tip ps-t1"><b>The collar</b> It sits around the pole you already have. <label for="ps-h0" class="ps-x">Close</label></div><div class="ps-tip ps-t2"><b>The seam and clips</b> It opens along this seam, so it goes on from the side. Two clips hold it shut. <label for="ps-h0" class="ps-x">Close</label></div><div class="ps-tip ps-t3"><b>The edge</b> A climbing squirrel meets this and can't get round it. <label for="ps-h0" class="ps-x">Close</label></div></div>
-  </figure>
-</section>
+</div>
 
-<section class="ps-winter ps-pad" aria-labelledby="ps-w-h">
-  <header><h2 id="ps-w-h" class="ps-rise">For winter feeding</h2><p class="ps-rise">Winter is when the birds lean on your feeder most, and when nobody wants to take it down in the snow to fit a baffle.</p></header>
-  <div class="ps-row">
-    <figure class="ps-r1"><video autoplay muted loop playsinline preload="metadata" poster="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793092140/perch-seed/page/hero-loop-poster.jpg" width="700" height="480" aria-label="A northern cardinal and a woodpecker at a snowy backyard feeder"><source src="https://res.cloudinary.com/ktsn1a7m/video/upload/q_auto/v1793092144/perch-seed/page/hero-loop.mp4" type="video/mp4"></video><figcaption>A real snowy feeder</figcaption></figure>
-    <figure class="ps-r2"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793093091/perch-seed/page/season-autumn.jpg" width="1400" height="935" alt="A dark-eyed junco on snowy grass" loading="lazy"><figcaption>Junco</figcaption></figure>
-    <figure class="ps-r3"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793092138/perch-seed/page/cardinal-snow.jpg" width="1344" height="1010" alt="A male northern cardinal in falling snow" loading="lazy"><figcaption>Cardinal</figcaption></figure>
+<main class="after">
+  <div class="wrap">
+    <h2>The birds you keep it full for</h2>
+    <p class="lede">The ones already at your feeder, drawn by Audubon nearly two hundred years ago.</p>
+    <div class="birds">
+      <figure><img src="assets/plate-cardinal.jpg" alt="Audubon plate of a northern cardinal" loading="lazy"><figcaption>Northern cardinal</figcaption></figure>
+      <figure><img src="assets/plate-chickadee.jpg" alt="Audubon plate of a chickadee" loading="lazy"><figcaption>Chickadee</figcaption></figure>
+      <figure><img src="assets/plate-junco.jpg" alt="Audubon plate of a junco" loading="lazy"><figcaption>Junco</figcaption></figure>
+      <figure><img src="assets/plate-bluejay.jpg" alt="Audubon plate of a blue jay" loading="lazy"><figcaption>Blue jay</figcaption></figure>
+    </div>
   </div>
-</section>
 
-<section class="ps-birds" aria-labelledby="ps-b-h">
-  <div class="ps-pad"><h2 id="ps-b-h" class="ps-rise">The birds you keep it full for</h2><p class="ps-rise">The ones already at your feeder, drawn by Audubon nearly two hundred years ago.</p></div>
-  <div class="ps-pad"><div class="ps-clip"><div class="ps-track"><figure><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793092141/perch-seed/page/plate-cardinal.jpg" alt="Northern cardinal, drawn by Audubon" loading="lazy" width="480" height="600"><figcaption>Northern cardinal</figcaption></figure><figure><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793092142/perch-seed/page/plate-chickadee.jpg" alt="Chickadee, drawn by Audubon" loading="lazy" width="480" height="600"><figcaption>Chickadee</figcaption></figure><figure><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793092142/perch-seed/page/plate-goldfinch.jpg" alt="Goldfinch, drawn by Audubon" loading="lazy" width="480" height="600"><figcaption>Goldfinch</figcaption></figure><figure><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793093092/perch-seed/page/plate-bluejay.jpg" alt="Blue jay, drawn by Audubon" loading="lazy" width="480" height="600"><figcaption>Blue jay</figcaption></figure><figure><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793093092/perch-seed/page/plate-junco.jpg" alt="Junco, drawn by Audubon" loading="lazy" width="480" height="600"><figcaption>Junco</figcaption></figure><figure><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793092143/perch-seed/page/plate-nuthatch.jpg" alt="Nuthatch, drawn by Audubon" loading="lazy" width="480" height="600"><figcaption>Nuthatch</figcaption></figure><figure><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793093093/perch-seed/page/plate-titmouse.jpg" alt="Titmouse, drawn by Audubon" loading="lazy" width="480" height="600"><figcaption>Titmouse</figcaption></figure><figure><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793093093/perch-seed/page/plate-purplefinch.jpg" alt="Purple finch, drawn by Audubon" loading="lazy" width="480" height="600"><figcaption>Purple finch</figcaption></figure><figure aria-hidden="true"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793092141/perch-seed/page/plate-cardinal.jpg" alt="" loading="lazy" width="480" height="600"><figcaption>Northern cardinal</figcaption></figure><figure aria-hidden="true"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793092142/perch-seed/page/plate-chickadee.jpg" alt="" loading="lazy" width="480" height="600"><figcaption>Chickadee</figcaption></figure><figure aria-hidden="true"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793092142/perch-seed/page/plate-goldfinch.jpg" alt="" loading="lazy" width="480" height="600"><figcaption>Goldfinch</figcaption></figure><figure aria-hidden="true"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793093092/perch-seed/page/plate-bluejay.jpg" alt="" loading="lazy" width="480" height="600"><figcaption>Blue jay</figcaption></figure><figure aria-hidden="true"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793093092/perch-seed/page/plate-junco.jpg" alt="" loading="lazy" width="480" height="600"><figcaption>Junco</figcaption></figure><figure aria-hidden="true"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793092143/perch-seed/page/plate-nuthatch.jpg" alt="" loading="lazy" width="480" height="600"><figcaption>Nuthatch</figcaption></figure><figure aria-hidden="true"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793093093/perch-seed/page/plate-titmouse.jpg" alt="" loading="lazy" width="480" height="600"><figcaption>Titmouse</figcaption></figure><figure aria-hidden="true"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1000/v1793093093/perch-seed/page/plate-purplefinch.jpg" alt="" loading="lazy" width="480" height="600"><figcaption>Purple finch</figcaption></figure></div>
-</div></div>
-</section>
-
-<section class="ps-facts ps-pad" id="ps-facts" aria-labelledby="ps-f-h">
-  <figure class="ps-plate ps-rise"><img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793093094/perch-seed/page/plate-foxsquirrel.jpg" alt="A fox squirrel, drawn by Audubon" loading="lazy" width="1200" height="852"><figcaption>The one it's for. Fox squirrel, J. J. Audubon.</figcaption></figure>
-  <div>
-    <h2 id="ps-f-h" class="ps-rise">The facts so far</h2>
-    <ol class="ps-list">
-      <li><b>Goes on from the side</b><span>It opens, wraps the pole and clips shut.</span></li>
-      <li><b>Your feeder stays up</b><span>No ladder, no taking it down in the snow.</span></li>
-      <li><b>Pole sizes come first</b><span>Confirmed with the supplier before anything goes on sale.</span></li>
-      <li><b>Free to join the list</b><span>No payment taken. The price comes in the first email.</span></li>
-    </ol>
+  <div class="wrap">
+    <div class="photo">
+      <img src="assets/cardinal-snow.jpg" alt="A real cardinal in the snow" loading="lazy">
+      <div style="display:grid;gap:14px">
+        <h2>The facts so far</h2>
+        <p class="lede">What we know now, and what we're still checking.</p>
+      </div>
+    </div>
+    <dl class="facts">
+      <div><dt>Goes on from the side</dt><dd>It opens, wraps the pole and clips shut.</dd></div>
+      <div><dt>Your feeder stays up</dt><dd>No ladder, no taking it down in the snow.</dd></div>
+      <div><dt>Pole sizes come first</dt><dd>Confirmed with the supplier before anything goes on sale.</dd></div>
+      <div><dt>Free to join the list</dt><dd>No payment taken. The price comes in the first email.</dd></div>
+    </dl>
   </div>
-</section>
 
-<section class="ps-use ps-pad" id="ps-yard" aria-labelledby="ps-u-h">
-  <img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793092144/perch-seed/page/squirrel-pole-wide.jpg" width="1400" height="933" alt="A squirrel clinging to a feeder pole and eating from a seed feeder" loading="lazy">
-  <div class="ps-panel ps-rise">
-    <h2 id="ps-u-h">It stops the climb, not the jump</h2>
-    <ul><li><b>8 to 10 ft</b><span>from fences, roofs and branches, so nothing can jump to the feeder.</span></li><li><b>4 to 5 ft</b><span>from the ground to the top of the baffle.</span></li><li><b>A tray</b><span>under the feeder, so dropped seed doesn't pull them in.</span></li></ul>
-    <small>The usual advice from <a href="https://www.audubon.org/magazine/how-stop-squirrels-raiding-your-bird-feeders">Audubon</a> and <a href="https://www.wbu.com/keeping-squirrels-off-bird-feeders/">Wild Birds Unlimited</a>.</small>
-  </div>
-</section>
-
-<section class="ps-join ps-pad" id="ps-join" aria-labelledby="ps-j-h"><canvas class="ps-sky" data-dusk="snow:0.7,density:0.9" aria-hidden="true"></canvas>
-  <img src="https://res.cloudinary.com/ktsn1a7m/image/upload/f_auto,q_auto,w_1800/v1793092138/perch-seed/page/cardinal-snow.jpg" width="1344" height="1010" alt="" aria-hidden="true" loading="lazy">
-  <div class="ps-box ps-embed" aria-labelledby="ps-j-h"><h2 id="ps-j-h">Get one first</h2><!-- MailerLite Universal -->
+  <div class="wrap">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>Can I buy one now?</summary><p>Not yet. We're counting interest first, and no payment is taken.</p></details>
+      <details><summary>Will it stop every squirrel?</summary><p>No baffle can promise that. Placement does most of the work, so keep the feeder away from anything a squirrel can jump from.</p></details>
+      <details><summary>What happens to my email?</summary><p>Only we and our email tool (MailerLite) see it. We never sell or share it.</p></details>
+    </div>
+    <span id="ps-join"></span><div class="join" id="join">
+      <h2>Get one first</h2>
+      <p class="lede">Leave your email and we'll write once, when it's ready, with the price.</p>
+<!-- MailerLite Universal -->
 <script>
 (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
 .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
@@ -347,208 +223,268 @@ n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
 ml('account', '2745570');
 </script>
 <!-- End MailerLite Universal -->
-<div class="ml-embedded" data-form="qGMBwv"></div>
-<ul class="ps-promise"><li>Free to join</li><li>No payment taken</li><li>One email when it's ready</li><li>Unsubscribe any time</li></ul></div>
-  <div class="ps-faq" id="ps-faq">
-    <div><h3>Can I buy one now?</h3><p>Not yet. We're counting interest first, and no payment is taken.</p></div>
-    <div><h3>Will it stop every squirrel?</h3><p>No baffle can promise that. Placement does most of the work, so use the tips above.</p></div>
-    <div><h3>What happens to my email?</h3><p>Only we and our email tool (MailerLite) see it. We never sell or share it.</p></div>
+      <div class="ml-embedded" data-form="qGMBwv"></div>
+      <ul class="promise"><li>Free to join</li><li>No payment taken</li><li>One email when it's ready</li><li>Unsubscribe any time</li></ul>
+    </div>
+    <footer>
+      <p>© 2026 Perch &amp; Seed · Feed the birds, not the squirrels. · <a href="https://www.instagram.com/perch.and.seed/">Instagram</a> · <a href="https://www.tiktok.com/@perch.and.seed">TikTok</a> · perchandseed@gmail.com</p>
+      <p>The yard, squirrel and baffle are an animation (Made with AI · Illustration). Bird plates: John James Audubon, The Birds of America, public domain. Snow cardinal: Wildreturn, CC BY 2.0, via Wikimedia Commons.</p>
+    </footer>
   </div>
-</section>
 </main>
-<footer class="ps-foot ps-pad">
-  <span>© 2026 Perch &amp; Seed · Feed the birds, not the squirrels. · <a href="https://www.instagram.com/perch.and.seed/">Instagram</a> · <a href="https://www.tiktok.com/@perch.and.seed">TikTok</a> · perchandseed@gmail.com</span>
-  <span>Bird photos and video: U.S. Fish and Wildlife Service, public domain. Snow cardinal: Wildreturn, CC BY 2.0. Squirrel photo: Robert Taylor, CC BY 2.0. Via Wikimedia Commons. Baffle shown as an animation.</span>
-</footer>
+
+<a class="pin" id="pin" href="#join">Join the waitlist</a>
 
 <script>
-/* Perch & Seed "Up close" motion layer.
-   Adapted from the AnimatedWebs free build prompt "Aurora Over the Snowfield" (kaamos-aurora-snowfield):
-   starfield with slow twinkle, depth snowfall with wind gusts, cursor parallax, scroll-linked fall speed,
-   off-screen pause, reduced-motion still frame. The aurora is swapped for a faint gold dusk glow so it
-   stays in the winter dusk palette. */
-(function () {
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DPR = Math.min(window.devicePixelRatio || 1, 1.75);
-  var GOLD = [242, 210, 126];
-  var pointer = { x: 0, y: 0, tx: 0, ty: 0 };
-  var scrollBoost = 0, lastY = scrollY;
-  document.documentElement.classList.add('ps-m');
+(function(){
+'use strict';
+var film=document.getElementById('film'), cv=document.getElementById('sky'), ctx=cv.getContext('2d');
+var beats=[].slice.call(document.querySelectorAll('.beat'));
+var steps=[].slice.call(document.querySelectorAll('.steps li'));
+var parts=document.getElementById('parts'), partItems=[].slice.call(parts.querySelectorAll('li'));
+var hint=document.getElementById('hint'), pin=document.getElementById('pin'), join=document.getElementById('join');
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var W=0,H=0,DPR=1,k=1,mobile=false,fx=0,G0=0;
+var pT=0,p=0,t0=performance.now(),inView=true,lastY=scrollY,boost=0;
 
-  addEventListener('pointermove', function (e) {
-    pointer.tx = e.clientX / innerWidth - 0.5;
-    pointer.ty = e.clientY / innerHeight - 0.5;
-  }, { passive: true });
-  addEventListener('scroll', function () {
-    var dy = Math.abs(scrollY - lastY); lastY = scrollY;
-    scrollBoost = Math.min(2.2, scrollBoost + dy * 0.004);
-  }, { passive: true });
+/* helpers */
+function cl(v,a,b){return v<a?a:v>b?b:v}
+function seg(v,a,b){return cl((v-a)/(b-a),0,1)}
+function ease(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}
+function sm(x){return x*x*(3-2*x)}
+function lerp(a,b,x){return a+(b-a)*x}
+function hex(h){return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)]}
+function mix(a,b,x){var A=hex(a),B=hex(b);return 'rgb('+Math.round(lerp(A[0],B[0],x))+','+Math.round(lerp(A[1],B[1],x))+','+Math.round(lerp(A[2],B[2],x))+')'}
+function rng(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 
-  function rand(a, b) { return a + Math.random() * (b - a); }
+var stars=[],snow=[],farP=[],midP=[];
+function build(){
+  var r=rng(7);stars=[];
+  for(var i=0;i<(mobile?110:170);i++)stars.push({x:r()*W,y:r()*H*1.4,s:r()*1.3+.3,t:r()*6});
+  snow=[];for(i=0;i<(mobile?70:130);i++)snow.push({x:r()*W,y:r()*H,z:r()*.9+.1,w:r()*6});
+  farP=[];var x=-40;while(x<W+60){farP.push({x:x,h:(70+r()*90)*k});x+=(26+r()*40)*k}
+  midP=[];x=-60;while(x<W+80){if(Math.abs(x-fx)>190*k)midP.push({x:x,h:(170+r()*170)*k});x+=(70+r()*120)*k}
+}
+function resize(){
+  DPR=Math.min(devicePixelRatio||1,mobile?1.5:1.75);
+  W=cv.clientWidth;H=cv.clientHeight;mobile=W<=760;
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  k=mobile?Math.min(H/1250,W/520):Math.min(H/1000,W/900);
+  fx=mobile?W*.5:W*.64;G0=mobile?H*.78:H*.86;
+  build();
+}
 
-  function DuskSky(canvas, opt) {
-    this.c = canvas; this.x = canvas.getContext('2d');
-    this.o = Object.assign({ stars: 0, snow: 1, glow: 0, density: 1 }, opt || {});
-    this.on = false; this.t = 0; this.wind = 0.25; this.gust = 0; this.nextGust = 6;
-    this.resize(); this.seed();
-    var self = this;
-    new ResizeObserver(function () { self.resize(); self.seed(); if (!self.on) self.draw(0); }).observe(canvas);
-    new IntersectionObserver(function (en) {
-      self.vis = en[0].isIntersecting; self.toggle();
-    }, { rootMargin: '100px' }).observe(canvas);
-    document.addEventListener('visibilitychange', function () { self.toggle(); });
-    this.draw(0);
+/* timeline */
+function altAt(q){return q<.5?1-ease(seg(q,0,.2)):.62*ease(seg(q,.885,.985))}
+
+/* drawing pieces */
+function pine(x,base,h,col,snowA){
+  var w=h*.42;ctx.fillStyle=col;
+  for(var i=0;i<3;i++){var top=base-h+i*h*.26,ww=w*(.55+i*.25),bot=base-h*(.42-i*.16);
+    ctx.beginPath();ctx.moveTo(x,top);ctx.lineTo(x+ww,bot);ctx.lineTo(x-ww,bot);ctx.closePath();ctx.fill();
+    if(snowA>0){ctx.fillStyle='rgba(236,238,240,'+snowA+')';ctx.beginPath();ctx.moveTo(x,top);ctx.lineTo(x+ww*.35,top+(bot-top)*.35);ctx.lineTo(x-ww*.2,top+(bot-top)*.3);ctx.closePath();ctx.fill();ctx.fillStyle=col}}
+  ctx.fillRect(x-w*.06,base-h*.26,w*.12,h*.26);
+}
+function house(x,base,warm){
+  var w=230*k,h=150*k;ctx.fillStyle='#0c1524';ctx.fillRect(x-w,base-h,w,h);
+  ctx.beginPath();ctx.moveTo(x-w-14*k,base-h);ctx.lineTo(x-w*.5,base-h-90*k);ctx.lineTo(x+14*k,base-h);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#dfe4ec';ctx.beginPath();ctx.moveTo(x-w-16*k,base-h+2*k);ctx.lineTo(x-w*.5,base-h-92*k);ctx.lineTo(x+16*k,base-h+2*k);ctx.lineTo(x+4*k,base-h+8*k);ctx.lineTo(x-w*.5,base-h-78*k);ctx.lineTo(x-w-4*k,base-h+8*k);ctx.closePath();ctx.fill();
+  var g=ctx.createRadialGradient(x-w*.3,base-h*.55,4*k,x-w*.3,base-h*.55,120*k);g.addColorStop(0,'rgba(242,210,126,'+(.35*warm)+')');g.addColorStop(1,'rgba(242,210,126,0)');ctx.fillStyle=g;ctx.fillRect(x-w-120*k,base-h-120*k,w+240*k,h+200*k);
+  ctx.fillStyle='rgba(242,210,126,'+(.55+.4*warm)+')';ctx.fillRect(x-w*.38,base-h*.72,46*k,40*k);ctx.fillRect(x-w*.8,base-h*.72,46*k,40*k);
+  ctx.fillStyle='#0c1524';ctx.fillRect(x-w*.38+21*k,base-h*.72,4*k,40*k);ctx.fillRect(x-w*.8+21*k,base-h*.72,4*k,40*k);
+}
+function fence(x0,x1,base){
+  ctx.fillStyle='#3a2a1f';for(var x=x0;x<x1;x+=18*k){ctx.beginPath();ctx.moveTo(x,base);ctx.lineTo(x,base-62*k);ctx.lineTo(x+6*k,base-70*k);ctx.lineTo(x+12*k,base-62*k);ctx.lineTo(x+12*k,base);ctx.fill();
+    ctx.fillStyle='rgba(236,238,240,.85)';ctx.fillRect(x,base-66*k,12*k,4*k);ctx.fillStyle='#3a2a1f'}
+  ctx.fillRect(x0,base-48*k,x1-x0,6*k);ctx.fillRect(x0,base-22*k,x1-x0,6*k);
+}
+function metal(x0,x1,dark){var g=ctx.createLinearGradient(x0,0,x1,0);g.addColorStop(0,dark?'#3e4556':'#5b6375');g.addColorStop(.32,'#e9edf2');g.addColorStop(.5,'#b9c0cc');g.addColorStop(1,dark?'#2f3544':'#4a5162');return g}
+
+function feeder(G){
+  var x=fx,top=G-770*k,bot=G-615*k,w=34*k;
+  var gl=ctx.createRadialGradient(x,top+60*k,10*k,x,top+60*k,260*k);gl.addColorStop(0,'rgba(242,210,126,.22)');gl.addColorStop(1,'rgba(242,210,126,0)');ctx.fillStyle=gl;ctx.fillRect(x-300*k,top-200*k,600*k,500*k);
+  var g=ctx.createLinearGradient(x-w,0,x+w,0);g.addColorStop(0,'#5a4120');g.addColorStop(.35,'#c99a4f');g.addColorStop(1,'#4a3418');ctx.fillStyle=g;ctx.fillRect(x-w,top,w*2,bot-top);
+  ctx.strokeStyle='rgba(15,20,30,.45)';ctx.lineWidth=Math.max(1,1.2*k);ctx.beginPath();
+  for(var yy=top+6*k;yy<bot;yy+=8*k){ctx.moveTo(x-w,yy);ctx.lineTo(x+w,yy)}for(var xx=x-w+6*k;xx<x+w;xx+=8*k){ctx.moveTo(xx,top);ctx.lineTo(xx,bot)}ctx.stroke();
+  ctx.fillStyle=metal(x-w-4*k,x+w+4*k);ctx.fillRect(x-w-4*k,top-6*k,w*2+8*k,12*k);ctx.fillRect(x-w-4*k,bot-6*k,w*2+8*k,12*k);
+  ctx.beginPath();ctx.moveTo(x-w-12*k,top-6*k);ctx.quadraticCurveTo(x,top-48*k,x+w+12*k,top-6*k);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#F4F6F8';ctx.beginPath();ctx.moveTo(x-w-8*k,top-12*k);ctx.quadraticCurveTo(x-w*.4,top-44*k,x,top-50*k);ctx.quadraticCurveTo(x+w*.6,top-46*k,x+w+10*k,top-12*k);ctx.quadraticCurveTo(x,top-22*k,x-w-8*k,top-12*k);ctx.fill();
+  ctx.fillStyle=metal(x-60*k,x+60*k,true);[top+50*k,top+112*k].forEach(function(py,i){ctx.fillRect(i?x:x-62*k,py,62*k,4*k)});
+  ctx.fillStyle=metal(x-58*k,x+58*k);ctx.beginPath();ctx.ellipse(x,bot+10*k,58*k,9*k,0,0,Math.PI*2);ctx.fill();
+}
+function pole(G){ctx.fillStyle=metal(fx-7*k,fx+7*k);ctx.fillRect(fx-7*k,G-620*k,14*k,620*k);
+  ctx.fillStyle='rgba(19,32,58,.35)';ctx.beginPath();ctx.ellipse(fx+60*k,G+6*k,110*k,12*k,0,0,Math.PI*2);ctx.fill()}
+
+/* baffle: a cone around the pole; theta = where the seam is, open = how far the halves are apart, fly = halves still off screen */
+function baffle(G,theta,open,fly,clips,hl,wob){
+  var yc=G-440*k,yr=G-345*k,rc=13*k,R=150*k,ry=R*.17,rcy=rc*.32;
+  ctx.save();ctx.translate(fx,yr);ctx.rotate(wob);ctx.translate(-fx,-yr);
+  if(open>0.001||fly>0.001){
+    [-1,1].forEach(function(s){
+      ctx.save();var dx=s*(open*R*1.05+fly*W*.75);ctx.translate(fx+dx,(yc+yr)/2);ctx.rotate(s*open*.42);ctx.translate(-fx,-(yc+yr)/2);
+      ctx.fillStyle=metal(s<0?fx-R:fx,s<0?fx:fx+R,s>0);
+      ctx.beginPath();ctx.moveTo(fx,yc-rcy);ctx.lineTo(fx+s*rc,yc);ctx.lineTo(fx+s*R,yr);ctx.ellipse(fx,yr,R,ry,0,s<0?Math.PI:0,Math.PI/2,s<0);ctx.lineTo(fx,yc-rcy);ctx.closePath();ctx.fill();
+      ctx.strokeStyle='rgba(20,25,35,.55)';ctx.lineWidth=1.5*k;ctx.beginPath();ctx.moveTo(fx,yc);ctx.lineTo(fx,yr+ry);ctx.stroke();
+      ctx.restore();
+    });
+    ctx.restore();return;
   }
-  DuskSky.prototype.resize = function () {
-    var r = this.c.getBoundingClientRect();
-    this.w = Math.max(1, r.width); this.h = Math.max(1, r.height);
-    this.c.width = Math.round(this.w * DPR); this.c.height = Math.round(this.h * DPR);
-    this.x.setTransform(DPR, 0, 0, DPR, 0, 0);
-  };
-  DuskSky.prototype.seed = function () {
-    var area = this.w * this.h / (1440 * 900), small = this.w < 768 ? 0.45 : 1, d = this.o.density;
-    this.stars = [];
-    if (this.o.stars) for (var i = 0; i < Math.round(260 * area * small * this.o.stars); i++) this.stars.push({
-      x: Math.random(), y: Math.pow(Math.random(), 1.6) * 0.8, r: rand(0.4, 1.3),
-      p: rand(0, 6.28), s: rand(0.25, 0.9), g: Math.random() < 0.18
-    });
-    this.flakes = [];
-    // three depths: far (small, slow), mid, near (big, soft, quick)
-    var layers = [[0.55, 0.8, 1.4, 0.35, 0.18], [0.3, 1.4, 2.2, 0.6, 0.45], [0.15, 2.6, 4.2, 1.0, 0.9]];
-    for (var L = 0; L < 3; L++) {
-      var n = Math.round(150 * area * small * d * this.o.snow * layers[L][0] / 0.33);
-      for (var k = 0; k < n; k++) this.flakes.push({
-        L: L, x: Math.random() * this.w, y: Math.random() * this.h, r: rand(layers[L][1], layers[L][2]),
-        v: layers[L][3] * rand(22, 34), par: layers[L][4], ph: rand(0, 6.28), a: rand(0.55, 0.95)
-      });
+  ctx.fillStyle=metal(fx-R,fx+R);ctx.beginPath();ctx.moveTo(fx-rc,yc);ctx.lineTo(fx+rc,yc);ctx.lineTo(fx+R,yr);ctx.ellipse(fx,yr,R,ry,0,0,Math.PI);ctx.closePath();ctx.fill();
+  var sh=ctx.createLinearGradient(0,yc,0,yr+ry);sh.addColorStop(0,'rgba(255,255,255,0)');sh.addColorStop(1,'rgba(15,26,44,.28)');ctx.fillStyle=sh;ctx.fill();
+  ctx.fillStyle='#2b3140';ctx.beginPath();ctx.ellipse(fx,yc,rc,rcy,0,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle=metal(fx-rc,fx+rc);ctx.lineWidth=3*k;ctx.stroke();
+  ctx.fillStyle=metal(fx-7*k,fx+7*k);ctx.fillRect(fx-7*k,yc-60*k,14*k,60*k);
+  ctx.strokeStyle='rgba(255,255,255,.55)';ctx.lineWidth=2*k;ctx.beginPath();ctx.ellipse(fx,yr,R,ry,0,0,Math.PI);ctx.stroke();
+  var c=Math.cos(theta),s=Math.sin(theta),sx0=fx+rc*s,sy0=yc+rcy*c,sx1=fx+R*s,sy1=yr+ry*c;
+  if(c>0){
+    ctx.strokeStyle='rgba(18,22,32,.85)';ctx.lineWidth=2.2*k;ctx.beginPath();ctx.moveTo(sx0,sy0);ctx.lineTo(sx1,sy1);ctx.stroke();
+    if(clips>0){var ang=Math.atan2(sy1-sy0,sx1-sx0);[.38,.72].forEach(function(f){var cx=lerp(sx0,sx1,f),cy=lerp(sy0,sy1,f),sc=sm(clips);
+      ctx.save();ctx.translate(cx,cy);ctx.rotate(ang);ctx.scale(sc,sc);ctx.fillStyle='#f4f6f8';ctx.fillRect(-7*k,-5*k,14*k,10*k);ctx.strokeStyle='#596173';ctx.lineWidth=1*k;ctx.strokeRect(-7*k,-5*k,14*k,10*k);ctx.restore();
+      if(clips<1){ctx.strokeStyle='rgba(242,210,126,'+(1-clips)+')';ctx.lineWidth=2*k;ctx.beginPath();ctx.arc(cx,cy,(10+30*clips)*k,0,Math.PI*2);ctx.stroke()}})}
+  }
+  if(hl){ctx.save();ctx.shadowColor='rgba(242,210,126,.9)';ctx.shadowBlur=18*k;ctx.strokeStyle='rgba(242,210,126,'+(.95*hl.a)+')';ctx.lineWidth=3.5*k;ctx.beginPath();
+    if(hl.part===0)ctx.ellipse(fx,yc,rc+8*k,rcy+5*k,0,0,Math.PI*2);
+    else if(hl.part===1){if(c>0){ctx.moveTo(sx0,sy0);ctx.lineTo(sx1,sy1)}}
+    else ctx.ellipse(fx,yr,R+4*k,ry+3*k,0,0,Math.PI);
+    ctx.stroke();ctx.restore()}
+  ctx.restore();
+}
+
+/* squirrel, drawn head-up at (x,y); dir 1 = facing right */
+function squirrel(x,y,rot,sc,phase){
+  var s=k*sc;ctx.save();ctx.translate(x,y);ctx.rotate(rot);
+  var fur=ctx.createLinearGradient(-26*s,0,26*s,0);fur.addColorStop(0,'#5e4030');fur.addColorStop(.6,'#a07352');fur.addColorStop(1,'#7c573f');
+  ctx.fillStyle='#6d4a35';ctx.beginPath();ctx.moveTo(-8*s,30*s);ctx.bezierCurveTo(-70*s,40*s+Math.sin(phase)*4*s,-78*s,-30*s,-44*s,-62*s);ctx.bezierCurveTo(-30*s,-74*s,-12*s,-60*s,-24*s,-44*s);ctx.bezierCurveTo(-44*s,-20*s,-40*s,14*s,-6*s,14*s);ctx.closePath();ctx.fill();
+  ctx.strokeStyle='rgba(214,180,140,.55)';ctx.lineWidth=3*s;ctx.beginPath();ctx.moveTo(-50*s,-58*s);ctx.bezierCurveTo(-74*s,-28*s,-66*s,30*s,-14*s,32*s);ctx.stroke();
+  ctx.fillStyle=fur;ctx.beginPath();ctx.ellipse(0,0,22*s,40*s,.08,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#d9b88f';ctx.beginPath();ctx.ellipse(9*s,4*s,10*s,28*s,.1,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#6d4a35';ctx.beginPath();ctx.ellipse(-4*s,30*s,14*s,10*s,-.3,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle=fur;ctx.beginPath();ctx.arc(5*s,-46*s,17*s,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.ellipse(16*s,-56*s,8*s,11*s,.5,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#5e4030';ctx.beginPath();ctx.moveTo(-6*s,-58*s);ctx.lineTo(-2*s,-76*s);ctx.lineTo(6*s,-60*s);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#120c08';ctx.beginPath();ctx.arc(10*s,-50*s,3.4*s,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='rgba(255,255,255,.8)';ctx.beginPath();ctx.arc(11*s,-51.5*s,1.1*s,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#3b2a20';ctx.beginPath();ctx.arc(22*s,-62*s,2.6*s,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#7c573f';var a=Math.sin(phase)*5*s;ctx.beginPath();ctx.ellipse(20*s,-20*s+a,6*s,11*s,-.5,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.ellipse(20*s,22*s-a,7*s,12*s,-.4,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+}
+function bird(x,y,dir,sc){
+  var s=k*sc;ctx.save();ctx.translate(x,y);ctx.scale(dir,1);
+  ctx.fillStyle='#4a4f5a';ctx.beginPath();ctx.moveTo(-12*s,2*s);ctx.lineTo(-30*s,10*s);ctx.lineTo(-28*s,4*s);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#9aa1ab';ctx.beginPath();ctx.ellipse(0,0,15*s,11*s,-.15,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#e6d3b0';ctx.beginPath();ctx.ellipse(4*s,4*s,10*s,7*s,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#16181c';ctx.beginPath();ctx.arc(10*s,-9*s,8*s,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#f4f4f0';ctx.beginPath();ctx.ellipse(11*s,-6*s,5*s,3.4*s,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#16181c';ctx.beginPath();ctx.moveTo(14*s,-3*s);ctx.lineTo(9*s,2*s);ctx.lineTo(16*s,1*s);ctx.fill();
+  ctx.fillStyle='#2b2e33';ctx.beginPath();ctx.moveTo(17*s,-10*s);ctx.lineTo(22*s,-9*s);ctx.lineTo(17*s,-7*s);ctx.fill();
+  ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(12.5*s,-11*s,1*s,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+}
+function marker(x0,x1,y,label,a){
+  ctx.save();ctx.globalAlpha=a;ctx.strokeStyle='#F2D27E';ctx.fillStyle='#F2D27E';ctx.lineWidth=2*k;ctx.setLineDash([8*k,7*k]);ctx.beginPath();ctx.moveTo(x0,y);ctx.lineTo(x1,y);ctx.stroke();ctx.setLineDash([]);
+  [x0,x1].forEach(function(x){ctx.beginPath();ctx.arc(x,y,4*k,0,Math.PI*2);ctx.fill()});
+  ctx.font='600 '+Math.round(22*k+6)+'px "Public Sans",system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(label,(x0+x1)/2,y-8*k);ctx.restore();
+}
+function vmarker(x,y0,y1,label,a){
+  ctx.save();ctx.globalAlpha=a;ctx.strokeStyle='#F2D27E';ctx.fillStyle='#F2D27E';ctx.lineWidth=2*k;ctx.setLineDash([8*k,7*k]);ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y1);ctx.stroke();ctx.setLineDash([]);
+  [y0,y1].forEach(function(y){ctx.beginPath();ctx.arc(x,y,4*k,0,Math.PI*2);ctx.fill()});
+  ctx.font='600 '+Math.round(22*k+6)+'px "Public Sans",system-ui,sans-serif';var lw=ctx.measureText(label).width,lx=x+10*k+lw>W-8?x-10*k-lw:x+10*k;ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(label,lx,(y0+y1)/2);ctx.restore();
+}
+
+function draw(q,time){
+  var alt=altAt(q),dusk=1-alt;
+  var far=G0-150*k+alt*H*1.15, mid=G0-70*k+alt*H*1.65, G=G0+alt*H*2.3;
+  /* zoom for the close-up */
+  var zin=ease(seg(q,.64,.685)),zout=ease(seg(q,.83,.865)),zs=zin*(1-zout),z=1+(mobile?1.25:1.35)*zs;
+  var by=G-395*k,tx=mobile?W*.5:W*.62,ty=mobile?H*.34:H*.48;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  /* sky */
+  var top=mix('#04080f','#101d36',dusk),midc=mix('#0a1324','#2a3a5e',dusk),hor=mix('#0f1a2c','#c88a57',dusk);
+  var sg=ctx.createLinearGradient(0,far-H*1.7,0,far);sg.addColorStop(0,top);sg.addColorStop(.65,midc);sg.addColorStop(1,hor);ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);
+  var hg=ctx.createRadialGradient(fx,far,10,fx,far,H*.9);hg.addColorStop(0,'rgba(242,210,126,'+(.32*dusk)+')');hg.addColorStop(1,'rgba(242,210,126,0)');ctx.fillStyle=hg;ctx.fillRect(0,0,W,H);
+  /* stars */
+  var sa=.15+.85*sm(alt);ctx.fillStyle='#fff';
+  for(var i=0;i<stars.length;i++){var st=stars[i],yy=st.y-H*.2+alt*H*.35;if(yy<0||yy>H)continue;ctx.globalAlpha=sa*(.5+.5*Math.sin(time*.0012+st.t));ctx.fillRect(st.x,yy,st.s,st.s)}
+  ctx.globalAlpha=1;
+  /* moon at the top of the dive */
+  if(alt>.05){var my=H*.22+alt*H*.05-(1-alt)*H*.6,mx=mobile?W*.78:W*.8;var mg=ctx.createRadialGradient(mx,my,0,mx,my,90*k);mg.addColorStop(0,'rgba(242,232,200,'+(.9*alt)+')');mg.addColorStop(.25,'rgba(242,232,200,'+(.85*alt)+')');mg.addColorStop(.3,'rgba(242,210,126,'+(.18*alt)+')');mg.addColorStop(1,'rgba(242,210,126,0)');ctx.fillStyle=mg;ctx.fillRect(mx-100*k,my-100*k,200*k,200*k)}
+  /* background layers get a little of the zoom */
+  ctx.save();var bz=1+(z-1)*.18;ctx.translate(lerp(fx,tx,zs),lerp(by,ty,zs)*1);ctx.scale(bz,bz);ctx.translate(-fx,-by);
+  if(far-200*k<H){farP.forEach(function(f){pine(f.x,far,f.h,mix('#0d1628','#22314f',dusk),.25*dusk)});
+    ctx.fillStyle=mix('#0d1628','#7f8aa3',dusk);ctx.fillRect(-W,far,W*3,H*3)}
+  if(mid-420*k<H){
+    ctx.fillStyle=mix('#0b1322','#a6b1c6',dusk);ctx.beginPath();ctx.moveTo(-W,mid);for(var xx=-W;xx<W*2;xx+=60)ctx.lineTo(xx,mid+Math.sin(xx*.01)*6*k);ctx.lineTo(W*2,H*3);ctx.lineTo(-W,H*3);ctx.fill();
+    var hx=Math.max(fx-430*k,mobile?W*.2:W*.2);house(hx,mid,dusk);fence(hx+10*k,hx+190*k,mid+4*k);
+    midP.forEach(function(m){if(m.x<hx+40*k&&m.x>hx-260*k)return;pine(m.x,mid+4*k,m.h,mix('#070d18','#13203a',dusk),.4*dusk)})}
+  ctx.restore();
+  /* yard plane */
+  ctx.save();ctx.translate(lerp(fx,tx,zs),lerp(by,ty,zs));ctx.scale(z,z);ctx.translate(-fx,-by);
+  if(G-800*k<H){
+    var gg=ctx.createLinearGradient(0,G,0,G+H*.4);gg.addColorStop(0,mix('#1a2740','#e3e8ef',dusk));gg.addColorStop(1,mix('#0b1322','#7d89a3',dusk));ctx.fillStyle=gg;
+    ctx.beginPath();ctx.moveTo(-W,G+10*k);ctx.quadraticCurveTo(fx-300*k,G-16*k,fx,G);ctx.quadraticCurveTo(fx+300*k,G+14*k,W*2,G-6*k);ctx.lineTo(W*2,H*4);ctx.lineTo(-W,H*4);ctx.fill();
+    var wg=ctx.createRadialGradient(fx,G,10,fx,G,520*k);wg.addColorStop(0,'rgba(242,210,126,'+(.28*dusk)+')');wg.addColorStop(1,'rgba(242,210,126,0)');ctx.fillStyle=wg;ctx.fillRect(fx-600*k,G-200*k,1200*k,700*k);
+    pole(G);feeder(G);
+    /* birds arrive once the squirrel has gone */
+    var ba=sm(seg(q,.6,.64))*(1-sm(seg(q,.9,.94)));
+    if(ba>0){ctx.globalAlpha=ba;var hop=Math.abs(Math.sin(time*.004))*3*k;
+      bird(fx-80*k,G-668*k-hop*(1-ba)-(1-ba)*40*k,1,1.15);bird(fx+86*k,G-730*k-(1-ba)*60*k,-1,1.05);ctx.globalAlpha=ba*sm(seg(q,.62,.66));bird(fx+70*k,G-608*k,-1,1);ctx.globalAlpha=1}
+    /* squirrel and baffle */
+    var yr=G-345*k,sq=null;
+    if(q>.235&&q<.645){
+      var run=seg(q,.235,.262),up=ease(seg(q,.262,.33)),up2=ease(seg(q,.52,.552)),slide=sm(seg(q,.556,.6)),leave=seg(q,.6,.645);
+      var climbTop=yr+74*k,start=G-62*k,cy;
+      if(q<.262){sq={x:lerp(-80*k,fx-28*k,ease(run)),y:G-30*k,r:Math.PI/2,ph:q*400}}
+      else if(q<.6){cy=lerp(start,climbTop,up);cy=lerp(cy,yr+64*k,up2*(1-slide));cy=lerp(cy,start,slide);
+        var shake=q>.552&&q<.58?Math.sin(q*900)*3*k:0;sq={x:fx-26*k+shake,y:cy,r:0,ph:q*600}}
+      else sq={x:lerp(fx-28*k,-120*k,ease(leave)),y:G-30*k,r:Math.PI/2,ph:q*500,flip:1,mir:1};
     }
-  };
-  DuskSky.prototype.toggle = function () {
-    var want = !reduce && this.vis && !document.hidden;
-    if (want && !this.on) { this.on = true; this.last = performance.now(); this.loop(); }
-    else if (!want) this.on = false;
-  };
-  DuskSky.prototype.loop = function () {
-    var self = this;
-    if (!this.on) return;
-    requestAnimationFrame(function (now) {
-      var dt = Math.min(0.05, (now - self.last) / 1000); self.last = now;
-      self.draw(dt); self.loop();
-    });
-  };
-  DuskSky.prototype.draw = function (dt) {
-    var x = this.x, w = this.w, h = this.h, o = this.o;
-    this.t += dt;
-    pointer.x += (pointer.tx - pointer.x) * 0.04; pointer.y += (pointer.ty - pointer.y) * 0.04;
-    scrollBoost *= 0.94;
-    // a gust roughly every 12 s: wind 0.25 -> 1.1 -> 0.25 over 4 s
-    this.nextGust -= dt;
-    if (this.nextGust <= 0) { this.gust = 4; this.nextGust = rand(10, 14); }
-    if (this.gust > 0) this.gust -= dt;
-    var g = this.gust > 0 ? Math.sin((1 - this.gust / 4) * Math.PI) : 0;
-    this.wind = 0.25 + g * 0.85;
-    x.clearRect(0, 0, w, h);
+    if(sq&&!sq.flip)drawSq(sq);
+    var fly=1-ease(seg(q,.345,.39)),open=1-ease(seg(q,.405,.455)),clips=seg(q,.465,.5);
+    var spin=ease(seg(q,.66,.83)),theta=lerp(.95,-.25,spin)+Math.sin(time*.0006)*.04;
+    var wob=q>.548&&q<.585?Math.sin((q-.548)*260)*.035*(1-seg(q,.548,.585)):0;
+    var hl=null;
+    if(q>.67&&q<.835){var pi=q<.73?0:q<.78?1:2,lo=[.675,.73,.78][pi],hi=[.73,.78,.83][pi];hl={part:pi,a:sm(seg(q,lo,lo+.01))*(1-sm(seg(q,hi-.008,hi)))}}
+    if(q>.34)baffle(G,theta,open,fly,clips,hl,wob);
+    if(sq&&sq.flip)drawSq(sq);
+    /* placement advice */
+    var ma=sm(seg(q,.855,.87))*(1-sm(seg(q,.905,.915)));
+    if(ma>0){var hx2=Math.max(fx-430*k,W*.2);marker(hx2+12*k,fx-70*k,G-690*k,'8–10 ft',ma);vmarker(fx+(mobile?150:170)*k,G,G-440*k,'4–5 ft',ma)}
+  }
+  ctx.restore();
+  /* snow */
+  var dt=1;ctx.fillStyle='rgba(244,246,248,.9)';
+  for(i=0;i<snow.length;i++){var f=snow[i];
+    if(!reduce){f.y+=(.35+f.z*1.1)*(1+boost)*dt;f.x+=Math.sin(time*.0006+f.w)*.3*f.z+.15}
+    if(f.y>H+6){f.y=-6;f.x=Math.random()*W}if(f.x>W+6)f.x=-6;
+    ctx.globalAlpha=.25+.6*f.z;ctx.beginPath();ctx.arc(f.x,f.y,(.6+f.z*2.2)*Math.max(.8,k),0,Math.PI*2);ctx.fill()}
+  ctx.globalAlpha=1;
+  var vg=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*.4,W/2,H/2,Math.max(W,H)*.8);vg.addColorStop(0,'rgba(5,9,19,0)');vg.addColorStop(1,'rgba(5,9,19,.45)');ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
+}
+function drawSq(s){if(s.mir){ctx.save();ctx.translate(s.x,0);ctx.scale(-1,1);squirrel(0,s.y,s.r,1,s.ph);ctx.restore()}else squirrel(s.x,s.y,s.r,1,s.ph)}
 
-    if (o.glow) {
-      var gr = x.createRadialGradient(w * 0.62, h * 1.05, 0, w * 0.62, h * 1.05, Math.max(w, h) * 0.75);
-      var pulse = reduce ? 1 : 0.85 + 0.15 * Math.sin(this.t * 0.25);
-      gr.addColorStop(0, 'rgba(242,210,126,' + (0.16 * o.glow * pulse) + ')');
-      gr.addColorStop(0.45, 'rgba(242,210,126,' + (0.05 * o.glow * pulse) + ')');
-      gr.addColorStop(1, 'rgba(242,210,126,0)');
-      x.fillStyle = gr; x.fillRect(0, 0, w, h);
-    }
-    for (var i = 0; i < this.stars.length; i++) {
-      var s = this.stars[i];
-      var tw = reduce ? 0.8 : 0.55 + 0.45 * Math.sin(this.t * s.s * 2 + s.p);
-      x.globalAlpha = tw * (s.g ? 0.95 : 0.7);
-      x.fillStyle = s.g ? 'rgb(' + GOLD + ')' : '#fff';
-      x.beginPath(); x.arc(s.x * w - pointer.x * 6, s.y * h - pointer.y * 4, s.r, 0, 6.283); x.fill();
-    }
-    x.globalAlpha = 1;
-    var fall = 1 + scrollBoost;
-    for (var j = 0; j < this.flakes.length; j++) {
-      var f = this.flakes[j];
-      f.y += f.v * fall * dt;
-      f.x += (this.wind * 40 * (0.4 + f.par) + Math.sin(this.t * 0.8 + f.ph) * 8) * dt;
-      if (f.y > h + 8) { f.y = -8; f.x = Math.random() * w; }
-      if (f.x > w + 8) f.x = -8; else if (f.x < -8) f.x = w + 8;
-      var px = f.x - pointer.x * 26 * f.par, py = f.y - pointer.y * 14 * f.par;
-      if (f.L === 2) {
-        var rg = x.createRadialGradient(px, py, 0, px, py, f.r * 1.8);
-        rg.addColorStop(0, 'rgba(255,255,255,' + f.a * 0.85 + ')');
-        rg.addColorStop(1, 'rgba(255,255,255,0)');
-        x.fillStyle = rg; x.beginPath(); x.arc(px, py, f.r * 1.8, 0, 6.283); x.fill();
-      } else {
-        x.globalAlpha = f.a * (f.L ? 0.85 : 0.6); x.fillStyle = '#fff';
-        x.beginPath(); x.arc(px, py, f.r, 0, 6.283); x.fill(); x.globalAlpha = 1;
-      }
-    }
-  };
+/* DOM beats */
+function ramp(q,a,b){if(a<0)return 1-sm(seg(q,b-.012,b));return sm(seg(q,a,a+.012))*(1-sm(seg(q,b-.012,b)))}
+function ui(q){
+  beats.forEach(function(el){var o=ramp(q,+el.dataset.a,+el.dataset.b);el.style.opacity=o.toFixed(3);el.classList.toggle('on',o>.5);
+    if(!reduce)el.style.translate='0 '+((1-o)*14).toFixed(1)+'px'});
+  steps.forEach(function(el){el.classList.toggle('on',q>=+el.dataset.a&&q<+el.dataset.b)});
+  var pa=ramp(q,.675,.83);parts.style.opacity=pa.toFixed(3);
+  partItems.forEach(function(el){el.classList.toggle('on',q>=+el.dataset.a&&q<+el.dataset.b)});
+  hint.style.opacity=(1-sm(seg(q,.005,.03))).toFixed(3);
+}
 
-  document.querySelectorAll('canvas[data-dusk]').forEach(function (c) {
-    var o = {}; c.dataset.dusk.split(',').forEach(function (kv) {
-      var p = kv.split(':'); if (p[0]) o[p[0].trim()] = parseFloat(p[1]);
-    });
-    new DuskSky(c, o);
-  });
-
-  if (reduce) return;
-
-  // Hero photo leans a few pixels with the cursor (depth against the near snow)
-  var hero = document.querySelector('.ps-frame img');
-  if (hero) (function lean() {
-    hero.style.translate = (-pointer.x * 14).toFixed(2) + 'px ' + (-pointer.y * 8).toFixed(2) + 'px';
-    requestAnimationFrame(lean);
-  })();
-
-  // Headings rise word by word as their section enters (once)
-  var io = new IntersectionObserver(function (en) {
-    en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('ps-in'); io.unobserve(e.target); } });
-  }, { threshold: 0.35 });
-  document.querySelectorAll('.ps h1, .ps h2').forEach(function (h) {
-    if (h.closest('.ps-win')) return;
-    var words = h.textContent.trim().split(/\s+/);
-    h.setAttribute('aria-label', h.textContent.trim());
-    h.innerHTML = words.map(function (w, i) {
-      return '<span class="ps-w" aria-hidden="true"><span style="transition-delay:' + (i * 70) + 'ms">' + w + '</span></span>';
-    }).join(' ');
-    h.classList.add('ps-split'); io.observe(h);
-  });
-
-  // The facts: "8 to 10 ft" counts up the first time it is seen
-  document.querySelectorAll('.ps-use li b').forEach(function (b) {
-    var m = b.textContent.match(/^(\d+) to (\d+)(.*)$/); if (!m) return;
-    var once = new IntersectionObserver(function (en) {
-      if (!en[0].isIntersecting) return; once.disconnect();
-      var a = +m[1], z = +m[2], t0 = performance.now();
-      (function step(now) {
-        var k = Math.min(1, (now - t0) / 900), e = 1 - Math.pow(1 - k, 3);
-        b.textContent = Math.round(a * e) + ' to ' + Math.round(z * e) + m[3];
-        if (k < 1) requestAnimationFrame(step);
-      })(t0);
-    }, { threshold: 0.6 });
-    b.textContent = '0 to 0' + m[3]; once.observe(b);
-  });
-
-  // Audubon plates tilt toward the cursor, with a soft light across the paper
-  if (matchMedia('(hover: hover)').matches) document.querySelectorAll('.ps-track figure, .ps-plate').forEach(function (el) {
-    el.classList.add('ps-tilt');
-    el.addEventListener('pointermove', function (e) {
-      var r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
-      el.style.transform = 'perspective(800px) rotateY(' + (px * 7).toFixed(2) + 'deg) rotateX(' + (-py * 7).toFixed(2) + 'deg) translateY(-4px)';
-      el.style.setProperty('--lx', (px + 0.5) * 100 + '%'); el.style.setProperty('--ly', (py + 0.5) * 100 + '%');
-    });
-    el.addEventListener('pointerleave', function () { el.style.transform = ''; });
-  });
-
-  // Buttons lean a little toward the pointer
-  if (matchMedia('(hover: hover)').matches) document.querySelectorAll('.ps-btn').forEach(function (b) {
-    b.addEventListener('pointermove', function (e) {
-      var r = b.getBoundingClientRect();
-      b.style.translate = ((e.clientX - r.left - r.width / 2) * 0.12).toFixed(1) + 'px ' + ((e.clientY - r.top - r.height / 2) * 0.2).toFixed(1) + 'px';
-    });
-    b.addEventListener('pointerleave', function () { b.style.translate = ''; });
-  });
+function target(){var r=film.getBoundingClientRect(),len=film.offsetHeight-innerHeight;return cl(-r.top/len,0,1)}
+function frame(now){
+  var y=scrollY;boost=Math.min(2.5,boost*.92+Math.abs(y-lastY)*.006);lastY=y;
+  pT=target();p=reduce?pT:p+(pT-p)*.14;if(Math.abs(pT-p)<.0002)p=pT;
+  if(inView){draw(p,now-t0);ui(p)}
+  var j=join.getBoundingClientRect();pin.classList.toggle('hide',(p>.935&&p<1)||(j.top<innerHeight&&j.bottom>0));
+  requestAnimationFrame(frame);
+}
+new IntersectionObserver(function(e){inView=e[0].isIntersecting}).observe(film);
+addEventListener('resize',function(){resize()});
+resize();p=pT=target();draw(p,0);ui(p);requestAnimationFrame(frame);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){draw(p,0)});
 })();
 
 /* Where a sign-up came from: ?src=facebook (or utm_source=facebook) pre-picks "Facebook" in the optional
@@ -576,10 +512,10 @@ ml('account', '2745570');
 })();
 // on a successful sign-up, MailerLite shows its own "Almost there" heading: hide ours so they don't stack
 (function () {
-  var host = document.querySelector('.ps-embed'); if (!host) return;
+  var host = document.getElementById('join'); if (!host) return;
   function check() {
     var ok = host.querySelector('.ml-form-successBody');
-    if (ok && getComputedStyle(ok).display !== 'none') { host.classList.add('ps-done'); mo.disconnect(); }
+    if (ok && getComputedStyle(ok).display !== 'none') { host.classList.add('done'); mo.disconnect(); }
   }
   var mo = new MutationObserver(check);
   mo.observe(host, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
