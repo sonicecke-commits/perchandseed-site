@@ -5,72 +5,375 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Bird Feeding Picks · Perch &amp; Seed</title>
 <meta name="description" content="Squirrel-resistant bird feeder picks, sorted into budget, mid-range and premium. Contains paid links.">
+<meta property="og:title" content="Bird feeding picks · Perch &amp; Seed">
+<meta property="og:description" content="Feed the birds, not the squirrels. Squirrel-resistant feeder picks in three tiers. Paid links.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Public+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Public+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root{--night:#0F1A2C;--dusk:#1D2F4E;--snow:#ECEEF0;--ink:#13203A;--gold:#F2D27E;--red:#AD2F27;--mist:#AEB8CB;
---bg:var(--snow);--surface:#FFFFFF;--fg:var(--ink);--fg-2:#4A5670;--line:#CBD2DE;--tier:var(--red);--btn:var(--ink);--on-btn:var(--snow);
---serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:var(--night);--surface:var(--dusk);--fg:var(--snow);--fg-2:var(--mist);--line:#2C4166;--tier:var(--gold);--btn:var(--gold);--on-btn:var(--night)}}
-:root[data-theme="dark"]{--bg:var(--night);--surface:var(--dusk);--fg:var(--snow);--fg-2:var(--mist);--line:#2C4166;--tier:var(--gold);--btn:var(--gold);--on-btn:var(--night)}
+--bg:var(--snow);--surface:#FFFFFF;--step:#E1E5EB;--fg:var(--ink);--fg-2:#4A5670;--tier:var(--red);--btn:var(--ink);--on-btn:var(--snow);--act:var(--red);--on-act:#FFFFFF;
+--serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+--m:clamp(16px,3vw,48px);--ease:cubic-bezier(.2,.8,.2,1)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:var(--night);--surface:var(--dusk);--step:#18263F;--fg:var(--snow);--fg-2:var(--mist);--tier:var(--gold);--btn:var(--gold);--on-btn:var(--night)}}
+:root[data-theme="dark"]{--bg:var(--night);--surface:var(--dusk);--step:#18263F;--fg:var(--snow);--fg-2:var(--mist);--tier:var(--gold);--btn:var(--gold);--on-btn:var(--night)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 clamp(17px,1.1vw,19px)/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-.01em}
-h1{font-size:clamp(38px,5vw,68px);line-height:1} h2{font-size:clamp(30px,3.4vw,46px);line-height:1.05} h3{font-size:clamp(21px,1.6vw,25px);line-height:1.15}
-p{margin:0;max-width:56ch} a{color:inherit}
-.inner{max-width:1200px;margin:0 auto;padding:0 16px}
-.disclose{background:var(--night);color:var(--snow);font-size:15px} .disclose .inner{padding-block:12px}
-.bar .inner{min-height:64px;display:flex;align-items:center} .word{font:600 24px/1 var(--serif);text-decoration:none}
-.hero .inner{padding-block:clamp(32px,5vw,72px);display:flex;flex-direction:column;gap:18px}
-.lede{font-size:clamp(19px,1.5vw,23px)} .how{font-size:15px;color:var(--fg-2)}
-.need .inner{padding-block:clamp(32px,4vw,56px);border-top:1px solid var(--line)} .sub{margin-top:10px;color:var(--fg-2)}
-.tiers{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-@media (max-width:900px){.tiers{grid-template-columns:1fr}}
-.pick{background:var(--surface);padding:22px;display:flex;flex-direction:column;gap:12px;border-radius:4px}
-.pick.empty{background:transparent;border:1px dashed var(--line);color:var(--fg-2)}
-.tier{font:700 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--tier)}
-.give{font-size:15px}
-.btn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;background:var(--btn);color:var(--on-btn);font:700 16px/1 var(--sans);text-decoration:none;border-radius:4px}
-a:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-footer .inner{padding-block:40px;font-size:15px;color:var(--fg-2);display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
-.su .inner{padding-block:clamp(32px,4vw,56px);border-top:1px solid var(--line)}.su .box{background:var(--surface);padding:clamp(20px,3vw,36px);border-radius:4px;max-width:760px;display:flex;flex-direction:column;gap:12px}.su label{font-weight:600}.su-row{display:flex;gap:10px;flex-wrap:wrap}.su input[type=email]{flex:1 1 240px;min-height:50px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--fg);font:inherit;padding:0 14px}.su button{min-height:50px;padding:0 22px;border:0;border-radius:4px;background:var(--btn);color:var(--on-btn);font:700 16px/1 var(--sans);cursor:pointer}.su button:disabled{opacity:.6}.su input:focus-visible,.su button:focus-visible{outline:3px solid var(--fg);outline-offset:2px}.su .su-small{font-size:15px;color:var(--fg-2)}.su .su-msg{font-weight:600;min-height:1.5em}.su-done .su-row{display:none}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;z-index:60;background:var(--gold);color:var(--night);padding:10px 14px}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 
+/* paid strip */
+.disclose{background:var(--night);color:var(--snow);font-size:14px;line-height:1.5;padding:10px var(--m)}
+
+/* the split stage */
+.page{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr)}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--night)}
+.frame{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.4s var(--ease)}
+.frame.on{opacity:1}
+.frame img,.frame video{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 9s linear}
+.frame.on img,.frame.on video{transform:scale(1)}
+.frame figcaption{position:absolute;left:16px;bottom:16px;font-size:14px;color:#fff;background:rgba(15,26,44,.72);padding:6px 10px}
+.read{min-width:0}
+.col{max-width:640px;padding:0 var(--m)}
+
+/* bar */
+.bar{display:flex;align-items:center;gap:22px;padding:22px var(--m)}
+.word{font:600 26px/1 var(--serif);letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.bar nav{display:flex;gap:20px;margin-left:auto;font-size:16px}
+.bar nav a{text-decoration:none;color:var(--fg-2);transition:color .2s;white-space:nowrap}
+.bar nav a:hover{color:var(--fg)}
+@media (max-width:1320px){.bar nav{display:none}}
+.act{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;background:var(--act);color:var(--on-act);font:700 16px/1 var(--sans);text-decoration:none;transition:transform .2s var(--ease),background .2s}
+.act:hover{transform:translateY(-2px);background:#952720}
+.act:active{transform:translateY(0)}
+.bar .act{margin-left:auto;min-height:44px;padding:0 18px;font-size:15px}
+@media (min-width:1321px){.bar .act{margin-left:0}}
+.bar .act{white-space:nowrap}
+
+/* hero */
+.hero{padding-top:clamp(28px,6vh,72px);padding-bottom:clamp(72px,10vh,120px)}
+.hero h1{font-size:clamp(44px,5.2vw,84px);line-height:.95;letter-spacing:-.035em;font-weight:700}
+.hero h1 .w{display:inline-block}
+.lede{font-size:clamp(19px,1.5vw,22px);max-width:34ch;margin-top:32px}
+.hero .act{margin-top:32px}
+.how{margin-top:48px;background:var(--step);padding:18px 20px;font-size:16px;max-width:52ch}
+.how b{font-weight:600}
+
+/* sections */
+.sec{padding-top:clamp(80px,12vh,150px)}
+.sec h2{font-size:clamp(34px,3.4vw,52px);line-height:1.02}
+.sec .sub{margin-top:18px;max-width:46ch}
+.inline{display:none;margin:28px 0 0;position:relative}
+.inline img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.inline figcaption{font-size:14px;color:var(--fg-2);margin-top:8px}
+
+/* the weight scale (live thing) */
+.who{margin-top:36px}
+.who [role=radiogroup]{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:46px;padding:0 18px;border:0;background:var(--step);color:var(--fg);font:600 16px/1 var(--sans);cursor:pointer;transition:background .2s,color .2s,transform .2s var(--ease)}
+.chip:hover{transform:translateY(-2px)}
+.chip[aria-checked=true]{background:var(--btn);color:var(--on-btn)}
+.read-out{margin-top:28px;display:grid;grid-template-columns:auto 1fr;gap:12px 28px;align-items:end}
+.grams{font:700 clamp(56px,6vw,92px)/.9 var(--serif);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.grams small{font-size:.38em;letter-spacing:0;font-weight:600}
+.coins{font-size:17px;padding-bottom:6px}
+.dots{display:grid;grid-template-columns:repeat(20,1fr);gap:5px;margin-top:24px;max-width:520px}
+.dots i{aspect-ratio:1;border-radius:50%;background:var(--step);transform:scale(.6);transition:background .25s,transform .35s var(--ease)}
+.dots i.f{background:var(--fg-2);transform:scale(1)}
+.dots.sq i.f{background:var(--red)}
+.state{margin-top:24px;padding:16px 20px;font-weight:600;background:var(--surface);border-left:6px solid var(--gold);transition:border-color .3s}
+.state.shut{border-left-color:var(--red)}
+.state span{display:block;font-weight:400;font-size:16px;color:var(--fg-2);margin-top:4px}
+.note{margin-top:14px;font-size:15px;color:var(--fg-2)}
+
+/* tiers: a vertical list of picks */
+.picks{list-style:none;padding:0;margin:40px 0 0;display:flex;flex-direction:column;gap:10px}
+.pick{background:var(--surface);padding:26px 26px 24px;display:grid;grid-template-columns:1fr;gap:10px;transition:transform .3s var(--ease)}
+.pick:hover{transform:translateX(6px)}
+.pick.empty{background:transparent;padding:14px 26px;color:var(--fg-2)}
+.pick.empty:hover{transform:none}
+.tier{display:flex;align-items:center;gap:12px;font:700 16px/1 var(--sans);color:var(--tier)}
+.ladder{display:inline-flex;gap:3px;align-items:flex-end}
+.ladder b{width:7px;background:var(--step)}
+.ladder b:nth-child(1){height:8px}.ladder b:nth-child(2){height:13px}.ladder b:nth-child(3){height:18px}
+.t1 .ladder b:nth-child(-n+1),.t2 .ladder b:nth-child(-n+2),.t3 .ladder b{background:var(--tier)}
+.pick h3{font-size:clamp(24px,2vw,30px);line-height:1.1}
+.give{font-size:16px;color:var(--fg-2)}
+.give b{color:var(--fg);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;background:var(--btn);color:var(--on-btn);font:700 16px/1 var(--sans);text-decoration:none;transition:transform .2s var(--ease),opacity .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0);opacity:.85}
 /* quieter paid-link label beside each button (Sam 2026-11-11) */
-.buy{margin-top:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.buy .btn{margin-top:0}.paidtag{font-size:12px;letter-spacing:.02em;color:var(--fg-2)}
+.buy{margin-top:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.buy .btn{margin-top:0}.paidtag{font-size:12px;letter-spacing:.02em;color:var(--fg-2)}
+
+/* the pole: the one full-width break */
+.pole{grid-column:1/-1;position:relative;margin-top:clamp(96px,14vh,170px);background:var(--night);color:var(--snow);display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr)}
+.pole figure{margin:0;position:relative;min-height:88svh;overflow:hidden}
+.pole figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.pole figcaption{position:absolute;left:16px;bottom:16px;font-size:14px;background:rgba(15,26,44,.72);padding:6px 10px}
+.pole .txt{padding:clamp(48px,8vw,120px) var(--m);display:flex;flex-direction:column;justify-content:center;gap:24px;max-width:700px}
+.pole h2{font-size:clamp(34px,3.4vw,52px);line-height:1.02}
+.pole p{max-width:44ch;color:var(--snow)}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.rule{background:var(--dusk);padding:22px}
+.rule .n{font:700 clamp(54px,5vw,84px)/.9 var(--serif);letter-spacing:-.04em;color:var(--gold);display:block}
+.rule .bar-m{display:block;height:6px;background:var(--gold);margin:16px 0 14px;transform-origin:left;transform:scaleX(0);transition:transform 1.2s var(--ease)}
+.rule.in .bar-m{transform:scaleX(1)}
+.rule p{font-size:16px;color:var(--mist)}
+
+/* how we pick: a slip */
+.slipwrap{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;margin-top:36px}
+.slip{background:var(--surface);padding:26px 26px 44px;font-size:16px;clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),96% 100%,92% calc(100% - 14px),88% 100%,84% calc(100% - 14px),80% 100%,76% calc(100% - 14px),72% 100%,68% calc(100% - 14px),64% 100%,60% calc(100% - 14px),56% 100%,52% calc(100% - 14px),48% 100%,44% calc(100% - 14px),40% 100%,36% calc(100% - 14px),32% 100%,28% calc(100% - 14px),24% 100%,20% calc(100% - 14px),16% 100%,12% calc(100% - 14px),8% 100%,4% calc(100% - 14px),0 100%)}
+.slip h3{font:700 17px/1.3 var(--sans);letter-spacing:0;margin-top:22px}
+.slip h3:first-child{margin-top:0}
+.row{display:flex;align-items:baseline;gap:8px;margin-top:10px}
+.row .lead{flex:1;border-bottom:4px dotted var(--fg-2);opacity:.45;transform:translateY(-4px)}
+.row .v{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+.total{margin-top:24px;background:var(--btn);color:var(--on-btn);padding:12px 16px;display:flex;justify-content:space-between;gap:12px;font-weight:700;flex-wrap:wrap}
+
+/* sign-up over the last photograph */
+.close{grid-column:1/-1;position:relative;min-height:90svh;display:grid;grid-template-columns:1fr 1fr;background:var(--night);color:var(--snow);overflow:hidden}
+.close>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:80% 35%;filter:brightness(.7)}
+.close .txt{grid-column:1;position:relative;align-self:end;padding:clamp(40px,7vw,96px) var(--m);display:flex;flex-direction:column;gap:16px;max-width:640px}
+.close h2{font-size:clamp(34px,3.4vw,52px);line-height:1.02}
+.su label{font-weight:600}
+.su-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.su input[type=email]{flex:1 1 240px;min-height:52px;border:0;background:var(--snow);color:var(--ink);font:inherit;padding:0 14px}
+.su button{min-height:52px;padding:0 22px;border:0;background:var(--gold);color:var(--night);font:700 16px/1 var(--sans);cursor:pointer;transition:transform .2s var(--ease)}
+.su button:hover{transform:translateY(-2px)}
+.su button:disabled{opacity:.6}
+.su .su-small{font-size:15px;color:var(--snow);opacity:.9}
+.su .su-msg{font-weight:600;min-height:1.5em}
+.su-done .su-row{display:none}
+.su a{color:var(--snow)}
+
+/* footer */
+footer{grid-column:1/-1;background:var(--night);color:var(--mist);padding:72px var(--m) 40px}
+footer .big{font:700 clamp(64px,13.5vw,220px)/.85 var(--serif);letter-spacing:-.05em;color:var(--snow);white-space:nowrap}
+footer .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:48px;font-size:15px}
+footer .cols p+p{margin-top:8px}
+footer h3{font:700 16px/1.3 var(--sans);letter-spacing:0;color:var(--snow);margin-bottom:8px}
+
+/* entrances */
+.rise{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rise.in{opacity:1;transform:none}
+.no-js .rise{opacity:1;transform:none}
+
+/* phone and tablet */
+@media (max-width:980px){
+  .page{grid-template-columns:1fr}
+  .stage{position:relative;height:44svh}
+  .stage .frame:not(.f-hero){display:none}
+  .inline{display:block}
+  .col{max-width:none}
+  .pole{grid-template-columns:1fr}
+  .pole figure{min-height:56svh}
+  .close{grid-template-columns:1fr;min-height:0}
+  .close>img{position:relative;height:60svh;filter:none}
+  .close .txt{grid-column:1;padding:32px var(--m) 48px}
+  footer .cols{grid-template-columns:1fr}
+}
+@media (max-width:600px){.row{justify-content:space-between;gap:16px}.row .lead{display:none}.row .v{text-align:right;white-space:normal}.total{flex-direction:column;gap:2px}}
+@media (max-width:520px){
+  .rules{grid-template-columns:1fr}
+  .dots{grid-template-columns:repeat(10,1fr);max-width:320px}
+  .read-out{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .rise{opacity:1;transform:none}
+  .frame img,.frame video{transform:none}
+}
 </style>
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <meta property="og:image" content="https://perchandseedco.com/og.png">
 <meta property="og:url" content="https://perchandseedco.com/picks/">
 </head>
-<body>
-<div class="disclose"><div class="inner">Perch &amp; Seed earns a commission if you buy through the links on this page. It costs you nothing extra. As an Amazon Associate we earn from qualifying purchases.</div></div>
-<header class="bar"><div class="inner"><a class="word" href="../">Perch &amp; Seed</a></div></header>
+<body class="no-js">
+<a class="skip" href="#feeders">Skip to the picks</a>
+<div class="disclose">Perch &amp; Seed earns a commission if you buy through the links on this page. It costs you nothing extra. As an Amazon Associate we earn from qualifying purchases.</div>
+
+<div class="page">
+<div class="stage" aria-hidden="true">
+  <figure class="frame f-hero on" data-for="top"><video autoplay muted loop playsinline preload="metadata" poster="../assets/feeder-loop-poster.jpg"><source src="../assets/feeder-loop.mp4" type="video/mp4"></video><figcaption>A cardinal and a woodpecker at a suet feeder in snow</figcaption></figure>
+  <figure class="frame" data-for="weigh"><img src="../assets/cardinal-snow.jpg" alt="" width="1344" height="1010" loading="lazy" style="object-position:92% 40%"><figcaption>A male cardinal in falling snow</figcaption></figure>
+  <figure class="frame" data-for="weigh-sq"><img src="../assets/squirrel-feeder.jpg" alt="" width="1400" height="933" loading="lazy" style="object-position:62% 50%"><figcaption>A squirrel helping itself at a tube feeder</figcaption></figure>
+  <figure class="frame" data-for="feeders"><img src="../assets/chickadee-feeder.jpg" alt="" width="1400" height="935" loading="lazy" style="object-position:62% 50%"><figcaption>A chickadee at a mesh feeder</figcaption></figure>
+  <figure class="frame" data-for="small"><img src="../assets/goldfinch-feeder.jpg" alt="" width="1400" height="935" loading="lazy" style="object-position:58% 50%"><figcaption>A goldfinch at a tube feeder</figcaption></figure>
+</div>
+
+<div class="read">
+<header class="bar">
+  <a class="word" href="../">Perch &amp; Seed</a>
+  <nav aria-label="Sections"><a href="#feeders">Feeders</a><a href="#small">Small birds</a><a href="#pole">The pole</a><a href="#how">How we pick</a></nav>
+  <a class="act" href="#feeders">See the picks</a>
+</header>
 <main>
-<section class="hero"><div class="inner">
-<h1>Feed the birds, not the squirrels</h1>
-<p class="lede">Squirrel-resistant feeder picks, each with a budget, mid-range and premium option where one passes our bar.</p>
-<p class="how">How we pick: every item has strong, long-running ratings from many buyers, and we read owner complaints and recall lists for safety problems, including anything that could hurt birds, before listing it. We haven't used these ourselves; the reasons come from maker specs and public owner reviews. No feeder is fully squirrel-proof. Picks checked November 10, 2026. Prices change, so check them on Amazon.</p>
-</div></section>
-<section class="need"><div class="inner"><h2>A feeder squirrels can't empty</h2><p class="sub">Weight-activated feeders: when a squirrel hangs on, a shroud drops and closes the seed ports (maker's description). Birds are light enough to keep eating.</p><ul class="tiers"><li class="pick"><span class="tier">Budget pick</span><h3>Brome Squirrel Buster Mini</h3><p>Suits small yards and balconies: the smallest of the line, same closing shroud.</p><p class="give"><b>The trade-off:</b> Holds less seed, so more refills. One owner reports the plastic aging after a couple of years.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B001FK81PU?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li><li class="pick"><span class="tier">Mid-range pick</span><h3>Brome Squirrel Buster Standard</h3><p>Suits most yards: the same mechanism in a mid-size feeder.</p><p class="give"><b>The trade-off:</b> Holds less seed than the Plus and has fewer extras.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B00ABGSX4S?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li><li class="pick"><span class="tier">Premium pick</span><h3>Brome Squirrel Buster Plus</h3><p>Suits big yards and cardinal fans: about 5 lb of seed, 6 ports and a cardinal ring (maker's description).</p><p class="give"><b>The trade-off:</b> It's the biggest and priciest of the line, and a pole needs a separate adaptor.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0007LQ3RQ?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li></ul></div></section><section class="need"><div class="inner"><h2>For a busy yard of small birds</h2><p class="sub">More ports, still squirrel-resistant.</p><ul class="tiers"><li class="pick empty"><span class="tier">Budget pick</span><p>Nothing has passed our bar here yet.</p></li><li class="pick"><span class="tier">Mid-range pick</span><h3>Brome Squirrel Solution200</h3><p>Suits finches, chickadees and other small birds: 6 ports, weight-activated.</p><p class="give"><b>The trade-off:</b> Owners say bigger birds like cardinals find its perches small.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B00AUFIQ1U?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li><li class="pick"><span class="tier">Premium pick</span><h3>Brome Squirrel Buster Legacy</h3><p>Suits people who want a more decorative feeder with the same squirrel-resistant mechanism.</p><p class="give"><b>The trade-off:</b> You pay more for the look, not for a different mechanism.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B016KVKVQU?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li></ul></div></section><section class="need"><div class="inner"><h2>Stopping squirrels climbing the pole</h2><p class="sub">Pole baffles: right now almost none meet our quality bar, so we list none. The free fix still works: put the baffle top about 5 ft up, and the feeder 8-10 ft from fences, branches and roofs.</p></div></section>
-<section class="su" id="updates" aria-labelledby="h-updates"><div class="inner"><div class="box">
-<h2 id="h-updates">New feeder picks, by email</h2>
-<p>We add and swap feeders as better ones show up. Leave your email and we'll tell you when this page changes. Our emails link back to this page, never straight to a store.</p>
-    <form class="su-form" data-kit-signup action="https://assets.mailerlite.com/jsonp/2745570/forms/202478167777085313/subscribe" method="post">
+<section class="hero col" id="top" data-stage="top" aria-labelledby="h1">
+  <h1 id="h1"><span class="w">Feed</span> <span class="w">the</span> <span class="w">birds,</span> <span class="w">not</span> <span class="w">the</span> <span class="w">squirrels.</span></h1>
+  <p class="lede rise">Squirrel-resistant feeder picks, each with a budget, mid-range and premium option where one passes our bar.</p>
+  <a class="act rise" href="#feeders">See the picks</a>
+  <p class="how rise"><b>How we pick:</b> every item has strong, long-running ratings from many buyers, and we read owner complaints and recall lists for safety problems, including anything that could hurt birds, before listing it. We haven't used these ourselves; the reasons come from maker specs and public owner reviews. No feeder is fully squirrel-proof. Picks checked November 10, 2026. Prices change, so check them on Amazon.</p>
+</section>
+
+<section class="sec col" id="weigh" data-stage="weigh" aria-labelledby="h-weigh">
+  <h2 id="h-weigh" class="rise">Weight is the whole trick.</h2>
+  <p class="sub rise">The feeders below close when something heavy hangs on: a shroud drops over the seed ports (maker's description). Pick who lands and see how far apart they are.</p>
+  <figure class="inline"><img src="../assets/squirrel-feeder.jpg" alt="A squirrel stretched up a pole, eating from a tube feeder" width="1400" height="933" loading="lazy"><figcaption>A squirrel helping itself at a tube feeder</figcaption></figure>
+  <div class="who rise">
+    <div role="radiogroup" aria-label="Who lands on the feeder">
+      <button class="chip" role="radio" aria-checked="true" data-g="11" data-n="2" data-who="A black-capped chickadee">Chickadee</button>
+      <button class="chip" role="radio" aria-checked="false" data-g="15" data-n="3" data-who="An American goldfinch">Goldfinch</button>
+      <button class="chip" role="radio" aria-checked="false" data-g="45" data-n="9" data-who="A northern cardinal">Cardinal</button>
+      <button class="chip" role="radio" aria-checked="false" data-g="500" data-n="100" data-who="An eastern gray squirrel" data-sq="1">Gray squirrel</button>
+    </div>
+    <div class="read-out" aria-live="polite">
+      <p class="grams"><span id="g">11</span><small> g</small></p>
+      <p class="coins"><span id="who">A black-capped chickadee</span> weighs about as much as <b id="n">2</b> US nickels.</p>
+    </div>
+    <div class="dots" id="dots" aria-hidden="true"></div>
+    <p class="state" id="state">Light enough to eat.<span>The ports stay open.</span></p>
+    <p class="note">Typical adult weights, rounded: chickadee 9-14 g, goldfinch 11-20 g, cardinal 42-48 g (Cornell Lab, All About Birds); eastern gray squirrel about 400-600 g. A US nickel weighs 5 g.</p>
+  </div>
+</section>
+
+<section class="sec col" id="feeders" data-stage="feeders" aria-labelledby="h-feeders">
+  <h2 id="h-feeders" class="rise">A feeder squirrels can't empty</h2>
+  <p class="sub rise">Weight-activated feeders: when a squirrel hangs on, a shroud drops and closes the seed ports (maker's description). Birds are light enough to keep eating.</p>
+  <figure class="inline"><img src="../assets/chickadee-feeder.jpg" alt="A black-capped chickadee perched beside a mesh feeder" width="1400" height="935" loading="lazy"><figcaption>A chickadee at a mesh feeder</figcaption></figure>
+  <ul class="picks">
+    <li class="pick t1 rise"><span class="tier"><span class="ladder" aria-hidden="true"><b></b><b></b><b></b></span>Budget pick</span><h3>Brome Squirrel Buster Mini</h3><p>Suits small yards and balconies: the smallest of the line, same closing shroud.</p><p class="give"><b>The trade-off:</b> Holds less seed, so more refills. One owner reports the plastic aging after a couple of years.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B001FK81PU?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li>
+    <li class="pick t2 rise"><span class="tier"><span class="ladder" aria-hidden="true"><b></b><b></b><b></b></span>Mid-range pick</span><h3>Brome Squirrel Buster Standard</h3><p>Suits most yards: the same mechanism in a mid-size feeder.</p><p class="give"><b>The trade-off:</b> Holds less seed than the Plus and has fewer extras.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B00ABGSX4S?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li>
+    <li class="pick t3 rise"><span class="tier"><span class="ladder" aria-hidden="true"><b></b><b></b><b></b></span>Premium pick</span><h3>Brome Squirrel Buster Plus</h3><p>Suits big yards and cardinal fans: about 5 lb of seed, 6 ports and a cardinal ring (maker's description).</p><p class="give"><b>The trade-off:</b> It's the biggest and priciest of the line, and a pole needs a separate adaptor.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B0007LQ3RQ?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li>
+  </ul>
+</section>
+
+<section class="sec col" id="small" data-stage="small" aria-labelledby="h-small">
+  <h2 id="h-small" class="rise">For a busy yard of small birds</h2>
+  <p class="sub rise">More ports, still squirrel-resistant.</p>
+  <figure class="inline"><img src="../assets/goldfinch-feeder.jpg" alt="An American goldfinch clinging to a metal tube feeder" width="1400" height="935" loading="lazy"><figcaption>A goldfinch at a tube feeder</figcaption></figure>
+  <ul class="picks">
+    <li class="pick empty t1"><span class="tier"><span class="ladder" aria-hidden="true"><b></b><b></b><b></b></span>Budget pick</span><p>Nothing has passed our bar here yet.</p></li>
+    <li class="pick t2 rise"><span class="tier"><span class="ladder" aria-hidden="true"><b></b><b></b><b></b></span>Mid-range pick</span><h3>Brome Squirrel Solution200</h3><p>Suits finches, chickadees and other small birds: 6 ports, weight-activated.</p><p class="give"><b>The trade-off:</b> Owners say bigger birds like cardinals find its perches small.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B00AUFIQ1U?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li>
+    <li class="pick t3 rise"><span class="tier"><span class="ladder" aria-hidden="true"><b></b><b></b><b></b></span>Premium pick</span><h3>Brome Squirrel Buster Legacy</h3><p>Suits people who want a more decorative feeder with the same squirrel-resistant mechanism.</p><p class="give"><b>The trade-off:</b> You pay more for the look, not for a different mechanism.</p><div class="buy"><a class="btn" href="https://www.amazon.com/dp/B016KVKVQU?tag=perchandseed-20" rel="sponsored noopener" target="_blank">See it on Amazon <span class="sr">(paid link)</span></a><span class="paidtag" aria-hidden="true">Paid link</span></div></li>
+  </ul>
+</section>
+</main>
+</div>
+</div>
+
+<section class="pole" id="pole" aria-labelledby="h-pole">
+  <figure><img src="../assets/squirrel-feeder.jpg" alt="A squirrel stretched up a feeder pole, eating from a tube feeder" width="1400" height="933" loading="lazy"><figcaption>Photo: Robert Taylor, CC BY 2.0</figcaption></figure>
+  <div class="txt">
+    <h2 id="h-pole" class="rise">Stopping squirrels climbing the pole</h2>
+    <p class="rise">Pole baffles: right now almost none meet our quality bar, so we list none. The free fix still works, and it comes down to two numbers.</p>
+    <div class="rules">
+      <div class="rule rise"><span class="n">5 ft</span><span class="bar-m"></span><p>Put the top of the baffle about 5 ft off the ground.</p></div>
+      <div class="rule rise"><span class="n">8-10 ft</span><span class="bar-m"></span><p>Keep the feeder 8-10 ft from fences, branches and roofs a squirrel could jump from.</p></div>
+    </div>
+  </div>
+</section>
+
+<div>
+<section class="sec col" id="how" aria-labelledby="h-how" style="max-width:1200px;margin:0 auto;padding-bottom:clamp(96px,14vh,170px)">
+  <div class="slipwrap" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));align-items:start">
+    <div>
+      <h2 id="h-how" class="rise">Checked before it's listed</h2>
+      <p class="sub rise">Every pick goes through the same checks, and a tier stays empty until something passes. We name the trade-off on every pick.</p>
+    </div>
+    <div class="slip rise" aria-label="Our checks">
+      <h3>Before a pick goes up</h3>
+      <p class="row"><span>Ratings from many buyers</span><span class="lead"></span><span class="v">strong, long-running</span></p>
+      <p class="row"><span>Owner complaints</span><span class="lead"></span><span class="v">read</span></p>
+      <p class="row"><span>Recall lists</span><span class="lead"></span><span class="v">checked</span></p>
+      <p class="row"><span>Anything that could hurt birds</span><span class="lead"></span><span class="v">checked</span></p>
+      <h3>What we tell you</h3>
+      <p class="row"><span>Where the reasons come from</span><span class="lead"></span><span class="v">maker specs, owner reviews</span></p>
+      <p class="row"><span>Our own testing</span><span class="lead"></span><span class="v">none yet</span></p>
+      <p class="row"><span>Prices</span><span class="lead"></span><span class="v">on Amazon</span></p>
+      <p class="total"><span>Picks last checked</span><span>November 10, 2026</span></p>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="close su" id="updates" aria-labelledby="h-updates">
+  <img src="../assets/cardinal-snow.jpg" alt="A male northern cardinal perched in falling snow" width="1344" height="1010" loading="lazy">
+  <div class="txt">
+    <h2 id="h-updates" class="rise">New feeder picks, by email</h2>
+    <p class="rise">We add and swap feeders as better ones show up. Leave your email and we'll tell you when this page changes. Our emails link back to this page, never straight to a store.</p>
+    <form class="su-form rise" data-kit-signup action="https://assets.mailerlite.com/jsonp/2745570/forms/202478167777085313/subscribe" method="post">
       <label for="su-email">Your email</label>
       <div class="su-row"><input id="su-email" type="email" name="fields[email]" autocomplete="email" required placeholder="name@example.com"><button type="submit">Email me new picks</button></div>
       <input type="hidden" name="fields[signup_source]" value="picks-page"><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
       <p class="su-msg" role="status" aria-live="polite"></p>
       <p class="su-small">We send one email first so you can confirm. Unsubscribe any time. <a href="../privacy.html">Privacy notice</a>.</p>
     </form>
-</div></div></section>
-</main>
-<footer><div class="inner">
-<p>Perch &amp; Seed is an AI-run brand: these pages and our videos are made with AI help.</p>
-<p>As an Amazon Associate we earn from qualifying purchases. Links marked "See it on Amazon" are paid links.</p>
-<p><a href="../privacy.html">Privacy notice</a></p>
-</div></footer>
+  </div>
+</section>
+
+<footer>
+  <p class="big" aria-hidden="true">Perch &amp; Seed</p>
+  <div class="cols">
+    <div><h3>Paid links</h3><p>As an Amazon Associate we earn from qualifying purchases. Links marked "See it on Amazon" are paid links.</p><p><a href="../privacy.html">Privacy notice</a></p></div>
+    <div><h3>About this page</h3><p>Perch &amp; Seed is an AI-run brand: these pages and our videos are made with AI help.</p></div>
+    <div><h3>Pictures</h3><p>Video and bird photos: U.S. Fish and Wildlife Service, public domain. Snow cardinal: Wildreturn, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. Squirrel: Robert Taylor, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. All via Wikimedia Commons. None of the photos show the feeders listed here.</p></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.body.classList.remove('no-js');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* headline words rise in on load */
+  var words = document.querySelectorAll('.hero h1 .w');
+  words.forEach(function(w,i){ if(reduce) return; w.style.opacity=0; w.style.transform='translateY(28px)';
+    w.style.transition='opacity .8s cubic-bezier(.2,.8,.2,1) '+(i*70)+'ms, transform .8s cubic-bezier(.2,.8,.2,1) '+(i*70)+'ms';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ w.style.opacity=1; w.style.transform='none'; }); }); });
+
+  /* entrances, staggered within each section */
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
+    var sib = e.target.parentElement.querySelectorAll('.rise'); var i = Array.prototype.indexOf.call(sib, e.target);
+    e.target.style.transitionDelay = Math.max(0,i)*80+'ms'; e.target.classList.add('in'); io.unobserve(e.target); }); }, {rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rise,.rule').forEach(function(el){ io.observe(el); });
+
+  /* the stage: crossfade to the picture of the section being read */
+  var frames = {}; document.querySelectorAll('.frame').forEach(function(f){ frames[f.dataset.for]=f; });
+  var current = 'top', sqOn = false;
+  function show(key){ Object.keys(frames).forEach(function(k){ frames[k].classList.toggle('on', k===key); }); }
+  function stageFor(id){ return id==='weigh' && sqOn ? 'weigh-sq' : id; }
+  var so = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ current = e.target.dataset.stage; show(stageFor(current)); } }); }, {rootMargin:'-45% 0px -45% 0px'});
+  document.querySelectorAll('[data-stage]').forEach(function(s){ so.observe(s); });
+  var vid = document.querySelector('.frame video');
+  document.addEventListener('visibilitychange', function(){ if(!vid) return; document.hidden ? vid.pause() : (!reduce && vid.play().catch(function(){})); });
+  if(reduce && vid){ vid.removeAttribute('autoplay'); vid.pause(); }
+
+  /* the weight scale */
+  var dots = document.getElementById('dots'); for(var i=0;i<100;i++){ dots.appendChild(document.createElement('i')); }
+  var ds = dots.children, chips = document.querySelectorAll('.chip'), gEl = document.getElementById('g'), nEl = document.getElementById('n'), whoEl = document.getElementById('who'), st = document.getElementById('state');
+  var gNow = 11;
+  function fill(n){ for(var i=0;i<100;i++){ (function(i){ var on = i<n; setTimeout(function(){ ds[i].classList.toggle('f', on); }, reduce?0:Math.min(i,60)*9); })(i); } }
+  function count(to){ if(reduce){ gEl.textContent=to; gNow=to; return; } var from=gNow, t0=performance.now(), d=700;
+    (function step(t){ var p=Math.min(1,(t-t0)/d), e=1-Math.pow(1-p,3); gEl.textContent=Math.round(from+(to-from)*e); if(p<1) requestAnimationFrame(step); else gNow=to; })(t0); }
+  function pick(c){ chips.forEach(function(x){ x.setAttribute('aria-checked', x===c?'true':'false'); x.tabIndex = x===c?0:-1; });
+    var g=+c.dataset.g, n=+c.dataset.n; count(g); nEl.textContent=n; whoEl.textContent=c.dataset.who; fill(n);
+    sqOn = !!c.dataset.sq; st.classList.toggle('shut', sqOn); dots.classList.toggle('sq', sqOn);
+    st.innerHTML = sqOn ? 'Heavy enough to close it.<span>The shroud drops over the seed ports (maker\'s description).</span>' : 'Light enough to eat.<span>The ports stay open.</span>';
+    if(current==='weigh') show(stageFor('weigh')); }
+  chips.forEach(function(c,i){ c.addEventListener('click', function(){ pick(c); });
+    c.addEventListener('keydown', function(e){ var k=e.key, j=null; if(k==='ArrowRight'||k==='ArrowDown') j=(i+1)%chips.length; if(k==='ArrowLeft'||k==='ArrowUp') j=(i-1+chips.length)%chips.length;
+      if(j!==null){ e.preventDefault(); chips[j].focus(); pick(chips[j]); } }); });
+  pick(chips[0]);
+})();
+</script>
 <script src="kit.js" data-gc="perchseed" defer></script>
 </body>
 </html>
