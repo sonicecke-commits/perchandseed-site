@@ -1,5 +1,12 @@
-# Perch & Seed
+# Perch & Seed: bird feeding picks site
 
-The Perch & Seed waitlist site: one static page. The top is a scroll film, a canvas drawing tied to the scroll position (labelled "Made with AI · Illustration"). The sign-up is the MailerLite embedded form (account 2745570, form qGMBwv). `?src=` or `utm_source=` is passed into the form as `signup_source` and pre-picks "Where did you hear about us?". Images are in `assets/`.
+Static site for GitHub Pages (Settings > Pages > Deploy from branch `main`, folder `/`).
 
-The earlier "Up close" page is in git history (commit 840e45b). Hosted on GitHub Pages (Settings > Pages > Deploy from branch `main`, folder `/`).
+- `index.html` forwards to `picks/` and keeps `?src=`. The old waitlist page is in git history.
+- `picks/index.html` is the picks page (paid links, budget / mid-range / premium, no prices).
+- `picks/kit.js` (same file on all three picks sites) runs the email sign-up and the cookie-free counting:
+  - Sign-up posts straight to MailerLite account 2745570, form 202478167777085313 ("Up close site"), double opt-in, with `signup_source` = the `?src=` value.
+  - GoatCounter code `perchseed` counts visits (source = `?src=`), clicks on "See it on Amazon" (`out/<ASIN>`) and sign-ups (`signup`). Nothing is fetched from Amazon.
+
+## Tracking ID swap (waiting on Sam)
+Until Sam creates `perchseed-20` in Associates Central, the Amazon links use the main store ID `goodgearpicks-20`, so a sale still counts toward the 3 qualifying sales (it just isn't split by brand). Once `perchseed-20` exists, change every `tag=goodgearpicks-20` in `picks/index.html` to `tag=perchseed-20` (one find-and-replace) and merge.
