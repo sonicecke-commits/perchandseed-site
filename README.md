@@ -9,4 +9,4 @@ Static site for GitHub Pages (Settings > Pages > Deploy from branch `main`, fold
   - GoatCounter code `perchseed` counts visits (source = `?src=`), clicks on "See it on Amazon" (`out/<ASIN>`) and sign-ups (`signup`). Nothing is fetched from Amazon.
 
 ## Tracking ID
-Amazon links use `perchandseed-20` (Sam created it 2026-11-11; `perchseed-20` was taken by another account, never use it).
+Amazon links use `perchandseed-20` (Sam created it 2026-11-11). The older `perchseed-20` is also in Sam's account, so old links with it still credit Sam.
