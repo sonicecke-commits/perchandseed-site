@@ -184,6 +184,36 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 
 /* quieter paid-link label beside each button (Sam 2026-11-11) */
 .paidtag{font-size:12px;letter-spacing:.02em;color:var(--fg-2)}.g-small .paidtag{color:var(--mist)}@media (max-width:640px){.pick .buy{flex-direction:row;align-items:center;gap:10px;flex-wrap:wrap}}
+
+/* problem lines, squirrel spot, questions, gift (marketing plan, PR #246) */
+.prob{display:inline-block;font-size:17px;margin-bottom:14px;padding:6px 12px;border:1.5px dashed currentColor;border-radius:4px;opacity:.9}
+.spot{padding:clamp(72px,10vw,150px) var(--m)}
+.spot .split .photo{aspect-ratio:7/5}
+.spot .photo img{object-fit:contain;background:#F3EEDF}
+.spot .tip{font-size:17px;color:var(--fg-2);max-width:52ch;margin-top:20px}
+.faq{padding:clamp(72px,9vw,140px) var(--m);background:var(--snow-2)}
+.qs{display:grid;max-width:980px}
+.qs details{border-top:1px solid var(--line);padding:20px 0}
+.qs details:last-child{border-bottom:1px solid var(--line)}
+.qs summary{cursor:pointer;font:700 clamp(22px,2.4vw,30px)/1.15 var(--display);letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.qs summary::-webkit-details-marker{display:none}
+.qs summary::after{content:"+";color:var(--accent-text);flex:none}
+.qs details[open] summary::after{content:"\2013"}
+.qs .a{margin-top:14px;max-width:62ch;display:grid;gap:10px}
+.qs .a p{color:var(--fg-2)}
+.qs .a strong{color:var(--fg)}
+.qs .src{font-size:14px}
+.gift{padding:clamp(64px,8vw,120px) var(--m);background:var(--night);color:var(--snow)}
+.gift .label{color:var(--gold)}
+.gift .gh p{color:var(--mist)}
+.glist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,32px)}
+.glist li{border-top:1px solid #2C3D5C;padding-top:16px;min-width:0}
+.glist b{display:block;font:700 22px/1.15 var(--display);letter-spacing:-.015em;margin-bottom:6px}
+.glist p{color:var(--mist);font-size:16px;margin-bottom:10px}
+.glist a{color:var(--gold);font-weight:600}
+@media (max-width:820px){.glist{grid-template-columns:1fr}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .gift{background:#070D18}}
+:root[data-theme="dark"] .gift{background:#070D18}
 </style>
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -195,7 +225,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 <div class="strip">Paid links: Perch &amp; Seed earns a commission if you buy through the links on this page, at no extra cost to you. As an Amazon Associate we earn from qualifying purchases.</div>
 <header class="bar">
   <a class="mark" href="../">Perch <i>&amp;</i> Seed</a>
-  <nav aria-label="Sections"><a href="#weigh">How they work</a><a href="#empty">Feeders</a><a href="#small-birds">Small birds</a><a href="#pole">The pole</a></nav>
+  <nav aria-label="Sections"><a href="#empty">Feeders</a><a href="#small-birds">Small birds</a><a href="#faq">Questions</a><a href="#gift">Gifts</a><a href="#pole">The pole</a></nav>
   <a class="act" href="#empty">See the picks</a>
 </header>
 
@@ -252,7 +282,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 </section>
 
 <section class="group g-feed" id="empty" aria-labelledby="h-feed">
-  <div class="gh"><div><p class="label rise">Squirrel-resistant feeders</p><h2 id="h-feed" class="rise">A feeder squirrels can't empty.</h2></div><p class="rise">Weight-activated feeders: when a squirrel hangs on, a shroud drops and closes the seed ports (maker's description). Birds are light enough to keep eating.</p></div>
+  <div class="gh"><div><p class="label rise">Squirrel-resistant feeders</p><p class="prob rise">The problem: squirrels empty the feeder.</p><h2 id="h-feed" class="rise">A feeder squirrels can't empty.</h2></div><p class="rise">Weight-activated feeders: when a squirrel hangs on, a shroud drops and closes the seed ports (maker's description). Birds are light enough to keep eating.</p></div>
   <div class="split">
     <figure class="photo rise"><img src="../assets/chickadee-feeder.jpg" alt="A black-capped chickadee perched beside a mesh feeder" loading="lazy" style="object-position:62% 50%"><figcaption>A chickadee at a mesh feeder. Not one of the picks.</figcaption></figure>
     <ul class="picks">
@@ -276,7 +306,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
 </section>
 
 <section class="group g-small flip" id="small-birds" aria-labelledby="h-small">
-  <div class="gh"><div><p class="label rise">Finches and chickadees</p><h2 id="h-small" class="rise">For a busy yard of small birds.</h2></div><p class="rise">More ports, still squirrel-resistant.</p></div>
+  <div class="gh"><div><p class="label rise">Finches and chickadees</p><p class="prob rise">The problem: a yard full of small birds, and squirrels too.</p><h2 id="h-small" class="rise">For a busy yard of small birds.</h2></div><p class="rise">More ports, still squirrel-resistant.</p></div>
   <div class="split">
     <ul class="picks">
       <li class="pick none rise">
@@ -298,6 +328,62 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   </div>
 </section>
 
+<section class="spot" id="squirrel-spot" aria-labelledby="h-spot">
+  <div class="gh"><div><p class="label rise">Team Both</p><p class="prob rise">The problem: you like the squirrels too.</p><h2 id="h-spot" class="rise">Give the squirrels their own spot.</h2></div><p class="rise">Some people keep the squirrels off the bird feeder and set up a separate squirrel spot well away from it, so both get fed.</p></div>
+  <div class="split">
+    <figure class="photo rise"><img src="../assets/plate-foxsquirrel.jpg" alt="Audubon's painting of three fox squirrels on a branch" loading="lazy"><figcaption>Fox squirrels, J. J. Audubon. Public domain.</figcaption></figure>
+    <ul class="picks">
+      <li class="pick none rise"><div class="ic" aria-hidden="true"></div><div><span class="tier">Budget pick</span><p>No squirrel feeder has passed our bar yet. We're checking some now.</p></div></li>
+      <li class="pick none rise"><div class="ic" aria-hidden="true"></div><div><span class="tier">Mid-range pick</span><p>Nothing listed until one passes.</p></div></li>
+      <li class="pick none rise"><div class="ic" aria-hidden="true"></div><div><span class="tier">Premium pick</span><p>Nothing listed until one passes.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="h-faq">
+  <div class="gh"><div><p class="label rise">The questions people ask</p><h2 id="h-faq" class="rise">Will it work for me?</h2></div><p class="rise">The worries that come up most, answered from makers' instructions and bird groups' guidance.</p></div>
+  <div class="qs">
+    <details class="rise" open>
+      <summary>Will a cardinal close it?</summary>
+      <div class="a">
+        <p><strong>The Squirrel Buster Plus can be set for it.</strong> Brome says the Plus is weight-adjustable: you loosen the spring to let heavier birds like cardinals feed, or tighten it to keep them out.</p>
+        <p>If cardinals close the ports at your setting, Brome's instructions show how to adjust it. The Plus also has a cardinal ring to perch on. The Solution200 has small perches that owners say cardinals find awkward.</p>
+        <p class="src">Source: Brome Bird Care support pages.</p>
+      </div>
+    </details>
+    <details class="rise">
+      <summary>Which seed should I start with?</summary>
+      <div class="a">
+        <p><strong>Sunflower.</strong> Cornell Lab's guide calls sunflower the seed that draws the widest variety of birds, and the mainstay of most backyard feeders. Black-oil sunflower is a common pick.</p>
+        <p class="src">Source: All About Birds, "Feeding Birds: a Quick Guide to Seed Types".</p>
+      </div>
+    </details>
+    <details class="rise">
+      <summary>Why did the birds vanish in the fall?</summary>
+      <div class="a">
+        <p><strong>Usually because there's plenty of wild food.</strong> Feeders are only a small part of a bird's diet. In fall, plants have gone to seed and shrubs are full of fruit, so birds visit feeders less. Cornell Lab's FeederWatch team calls this normal and says birds come back once cold weather uses up the wild food.</p>
+        <p class="src">Source: Cornell Lab of Ornithology, Project FeederWatch answers.</p>
+      </div>
+    </details>
+    <details class="rise">
+      <summary>What about raccoons and rats?</summary>
+      <div class="a">
+        <p><strong>Spilled seed is what draws them.</strong> Rake up dropped seed and hulls under the feeder. If raccoons keep coming, take the feeder in at night. Seed blends with cheap filler leave more waste on the ground, so plain sunflower helps here too.</p>
+        <p>None of the feeders on this page are sold as raccoon-proof.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="gift" id="gift" aria-labelledby="h-gift">
+  <div class="gh"><div><p class="label rise">Buying for a bird lover?</p><h2 id="h-gift" class="rise">Gift it by their yard.</h2></div><p class="rise">You don't need to know birds. Pick the line that sounds like them.</p></div>
+  <ul class="glist">
+    <li class="rise"><b>Small yard or balcony</b><p>The Squirrel Buster Mini: the smallest of the line, same closing shroud.</p><a href="#empty">See the Mini</a></li>
+    <li class="rise"><b>Squirrels raid everything</b><p>The Squirrel Buster Standard, or the Plus for a big yard and cardinals.</p><a href="#empty">See Standard and Plus</a></li>
+    <li class="rise"><b>Loves finches</b><p>The Squirrel Solution200: 6 ports for small birds.</p><a href="#small-birds">See the Solution200</a></li>
+  </ul>
+</section>
+
 <section class="how" id="how" aria-labelledby="h-how">
   <div class="gh"><div><p class="label rise">How we pick</p><h2 id="h-how" class="rise">Checked before it's listed.</h2></div><p class="rise">Picks checked November 10, 2026. Prices change, so check them on Amazon. No feeder is fully squirrel-proof.</p></div>
   <ol class="steps">
@@ -311,6 +397,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <img src="../assets/squirrel-feeder.jpg" alt="" loading="lazy">
   <div class="scrim"></div>
   <div class="inner">
+    <p class="prob rise">The problem: they climb the pole or jump on.</p>
     <h2 id="h-pole" class="rise">Stop the climb.</h2>
     <p class="rise">Pole baffles: right now almost none meet our quality bar, so we list none. The free fix still works, and it comes down to two numbers.</p>
     <div class="nums rise"><div><b>5 ft</b><span>Put the top of the baffle about 5 ft off the ground.</span></div><div><b>8-10 ft</b><span>Keep the feeder 8-10 ft from fences, branches and roofs.</span></div></div>
@@ -338,7 +425,7 @@ footer strong{color:var(--fg);font-weight:600;display:block;margin-bottom:4px}
   <div class="cols">
     <p><strong>Paid links</strong>Perch &amp; Seed earns a commission on purchases made through this page. As an Amazon Associate we earn from qualifying purchases. Links marked "See it on Amazon" are paid links.</p>
     <p><strong>About this page</strong>Perch &amp; Seed is an AI-run brand: these pages and our videos are made with AI help. Product names belong to their makers. Neither Amazon nor any maker endorses this page. <a href="../privacy.html">Privacy notice</a>.</p>
-    <p><strong>Pictures</strong>Video and bird photos: U.S. Fish and Wildlife Service, public domain. Snow cardinal: Wildreturn, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. Squirrel: Robert Taylor, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. All via Wikimedia Commons. None of them show the picks. Icons drawn for this page.</p>
+    <p><strong>Pictures</strong>Video and bird photos: U.S. Fish and Wildlife Service, public domain. Snow cardinal: Wildreturn, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. Squirrel: Robert Taylor, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. Fox squirrel plate: J. J. Audubon, public domain. All via Wikimedia Commons. None of them show the picks. Icons drawn for this page.</p>
   </div>
 </footer>
 
