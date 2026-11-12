@@ -375,6 +375,8 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
 .gl .gl-most{background:var(--red);color:#fff;letter-spacing:.03em;text-transform:uppercase;font-size:12px}
 .gl tr.gl-top .gl-most{background:var(--red);color:#fff}
 .gl .gl-m b{border-radius:50% 50% 50% 50%/62% 62% 38% 38%;width:7px;height:10px}
+.gl-h{font:800 condensed clamp(20px,2vw,26px)/1 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin:36px 0 10px;color:var(--ink)}
+.gl-h:first-of-type{margin-top:8px}
 .gl{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:17px;margin-top:-8px}
 .gl th{text-align:left;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--gl-muted);padding:0 20px 2px;border:0;font-family:inherit}
 .gl td{position:static;background:var(--gl-row);color:var(--gl-ink);padding:22px 20px;vertical-align:middle;border:0;line-height:1.4;transition:background-color .25s,color .25s}
@@ -478,6 +480,7 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
 <section class="glance" id="glance" aria-labelledby="h-glance"><div class="wrap">
   <h2 id="h-glance" class="rise">At a glance</h2>
   <p class="rise">Every feeder on one screen. Tap a name to jump to it.</p>
+  <h3 class="gl-h">Squirrel-resistant feeders</h3>
   <table class="gl">
     <thead><tr><th scope="col">Pick</th><th scope="col">Suits</th><th scope="col">Trade-off</th><th scope="col">Tier</th></tr></thead>
     <tbody>
@@ -486,6 +489,24 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
       <tr><td><a href="#pk-plus">Squirrel Buster Plus</a></td><td data-l="Suits">Big yards and cardinal fans</td><td data-l="Trade-off">The biggest of the three; a pole needs a separate adaptor</td><td class="gl-t" data-t="3" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Premium</span></td></tr>
       <tr><td><a href="#pk-solution200">Squirrel Solution200</a></td><td data-l="Suits">A busy yard of small birds</td><td data-l="Trade-off">Cardinals find its perches small</td><td class="gl-t" data-t="2" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Mid-range</span></td></tr>
       <tr><td><a href="#pk-legacy">Squirrel Buster Legacy</a></td><td data-l="Suits">A more decorative look</td><td data-l="Trade-off">Same mechanism; the extra is the look</td><td class="gl-t" data-t="3" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Premium</span></td></tr>
+    </tbody>
+  </table>
+  <h3 class="gl-h">Other feeders</h3>
+  <table class="gl">
+    <thead><tr><th scope="col">Pick</th><th scope="col">Suits</th><th scope="col">Trade-off</th><th scope="col">Type</th></tr></thead>
+    <tbody>
+      <tr><td><a href="#pk-suet">Kingsyard Upside Down Double Suet Feeder</a></td><td data-l="Suits">Woodpeckers, nuthatches and chickadees</td><td data-l="Trade-off">Some squirrels and sparrows still get to it</td><td data-l="Type"><span class="gl-tier">Suet</span></td></tr>
+      <tr><td><a href="#pk-platform">Kingsyard Hanging Platform Feeder</a></td><td data-l="Suits">Cardinals and birds that like a flat tray</td><td data-l="Trade-off">Open, so squirrels can reach it; clean wet seed often</td><td data-l="Type"><span class="gl-tier">Tray</span></td></tr>
+      <tr><td><a href="#pk-ground">Kingsyard Ground Bird Feeder</a></td><td data-l="Suits">Doves, juncos and other ground birds</td><td data-l="Trade-off">Near the ground, so squirrels reach it easily</td><td data-l="Type"><span class="gl-tier">Ground</span></td></tr>
+    </tbody>
+  </table>
+  <h3 class="gl-h">Seed</h3>
+  <table class="gl">
+    <thead><tr><th scope="col">Pick</th><th scope="col">Suits</th><th scope="col">Trade-off</th><th scope="col">Tier</th></tr></thead>
+    <tbody>
+      <tr><td><a href="#pk-wagners">Wagner's Cardinal Blend</a></td><td data-l="Suits">Cardinal fans</td><td data-l="Trade-off">Squirrels and chipmunks like it too</td><td class="gl-t" data-t="1" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Budget</span></td></tr>
+      <tr><td><a href="#pk-lyric">Lyric Supreme Wild Bird Mix</a></td><td data-l="Suits">A busy yard</td><td data-l="Trade-off">More millet than some like; has corn</td><td class="gl-t" data-t="2" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Mid-range</span></td></tr>
+      <tr><td><a href="#pk-hot-meats">Cole's Hot Meats</a></td><td data-l="Suits">Yards where squirrels still raid the feeder</td><td data-l="Trade-off">Works in most yards, not all; wear gloves when filling</td><td class="gl-t" data-t="3" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Premium</span></td></tr>
     </tbody>
   </table>
 </div></section>
@@ -784,6 +805,6 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
 })();
 </script>
 <script>document.querySelectorAll("select[data-swap]").forEach(function(sel){sel.addEventListener("change",function(){var a=document.getElementById(sel.dataset.swap);if(a)a.href=sel.value})})</script><script src="kit.js" data-gc="perchseed" data-bar="Want a heads-up when a pick changes?" data-bar-btn="Email me" defer></script>
-<script>/* gl-v2 reveal */(function(){var t=document.querySelector('.gl');if(!t||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;[].forEach.call(t.querySelectorAll('tbody tr'),function(r,i){r.style.setProperty('--i',i)});t.classList.add('gl-arm');var io=new IntersectionObserver(function(e){if(!e[0].isIntersecting)return;t.classList.add('gl-in');io.disconnect();setTimeout(function(){t.classList.add('gl-done')},t.querySelectorAll('tbody tr').length*90+1500)},{threshold:.12});io.observe(t)})();</script>
+<script>/* gl-v2 reveal */(function(){if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;[].forEach.call(document.querySelectorAll('.gl'),function(t){[].forEach.call(t.querySelectorAll('tbody tr'),function(r,i){r.style.setProperty('--i',i)});t.classList.add('gl-arm');var io=new IntersectionObserver(function(e){if(!e[0].isIntersecting)return;t.classList.add('gl-in');io.disconnect();setTimeout(function(){t.classList.add('gl-done')},t.querySelectorAll('tbody tr').length*90+1500)},{threshold:.12});io.observe(t)})})();</script>
 </body>
 </html>
