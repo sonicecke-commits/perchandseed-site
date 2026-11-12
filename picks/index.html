@@ -365,14 +365,65 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
 .glance{background:var(--paper);color:var(--ink);padding:clamp(48px,7vw,96px) 0}
 .glance h2{font:800 clamp(34px,5vw,64px)/.95 var(--display);letter-spacing:-.02em;text-transform:uppercase;margin:0 0 12px}
 .glance .wrap>p{margin:0 0 24px;color:var(--soft);max-width:52ch}
-.gl{width:100%;border-collapse:collapse;font-size:17px}
-.gl th{text-align:left;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);padding:0 16px 10px 0;border-bottom:2px solid var(--ink)}
-.gl td{padding:14px 16px 14px 0;border-bottom:1px solid var(--paper-2);vertical-align:top}
-.gl td a{font-weight:700;text-decoration:none;border-bottom:3px solid var(--sun)}
-.gl td a:hover{color:var(--field)}
-.gl .gl-most{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--red);color:#fff;padding:3px 8px}
-.gl .gl-tier{font-weight:700;color:var(--field)}
-@media (max-width:700px){.gl thead{display:none}.gl,.gl tbody,.gl tr,.gl td{display:block;width:100%}.gl tr{padding:14px 0;border-bottom:1px solid var(--paper-2)}.gl td{border:0;padding:3px 0}.gl td[data-l]::before{content:attr(data-l) ": ";color:var(--soft);font-size:14px}}
+/* at a glance v2 (gl-v2): Sam 2026-11-12 "make the at a glance tables look better". Rows become tappable bands, our pick inverted, tier meter, staggered reveal. */
+.glance{--gl-row:var(--cream);--gl-row-hi:var(--kraft);--gl-ink:var(--ink);--gl-muted:var(--soft);--gl-acc:var(--sun);--gl-acc-ink:var(--ink);--gl-top:var(--field);--gl-top-ink:var(--field-ink);--gl-top-muted:#C9D6CC;--gl-top-acc:var(--sun);--gl-off:#D9C79C;--gl-top-off:#4F7F63;--gl-r:4px;--gl-name:800 condensed clamp(20px,1.7vw,24px)/1.02 var(--display);--gl-name-case:uppercase;--gl-chip-r:0}
+.gl td a{font-stretch:75%}
+.gl .gl-tier{font-weight:700;color:var(--field)}.gl tr.gl-top .gl-tier{color:var(--sun)}
+.gl .gl-most{background:var(--red);color:#fff;letter-spacing:.03em;text-transform:uppercase;font-size:12px}
+.gl tr.gl-top .gl-most{background:var(--red);color:#fff}
+.gl .gl-m b{border-radius:50% 50% 50% 50%/62% 62% 38% 38%;width:7px;height:10px}
+.gl{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:17px;margin-top:-8px}
+.gl th{text-align:left;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--gl-muted);padding:0 20px 2px;border:0;font-family:inherit}
+.gl td{position:static;background:var(--gl-row);color:var(--gl-ink);padding:22px 20px;vertical-align:middle;border:0;line-height:1.4;transition:background-color .25s,color .25s}
+.gl td:first-child{border-radius:var(--gl-r) 0 0 var(--gl-r);width:36%}
+.gl td:last-child{border-radius:0 var(--gl-r) var(--gl-r) 0;white-space:nowrap}
+.gl tbody tr{position:relative;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .5s cubic-bezier(.2,.8,.2,1)}
+.gl tbody tr:hover td{background:var(--gl-row-hi)}
+.gl td a{font:var(--gl-name);text-transform:var(--gl-name-case);color:inherit;text-decoration:none;border:0;letter-spacing:-.01em}
+.gl td a::before{content:"";position:absolute;inset:0;z-index:1;border-radius:var(--gl-r)}
+.gl td a::after{content:"\2192";display:inline-block;margin-left:.35em;color:var(--gl-acc);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.gl td a:hover{color:inherit}
+.gl td a:focus-visible{outline:none}.gl td a:focus-visible::before{outline:3px solid var(--gl-acc);outline-offset:2px}
+.gl .gl-most{display:table;white-space:nowrap;margin-top:10px;font-size:13px;font-weight:700;line-height:1;padding:6px 10px;border-radius:var(--gl-chip-r);background:var(--gl-acc);color:var(--gl-acc-ink)}
+.gl td[data-l]{color:var(--gl-ink)}
+.gl tr.gl-top td{background:var(--gl-top);color:var(--gl-top-ink)}
+.gl tr.gl-top:hover td{background:var(--gl-top)}
+.gl tr.gl-top td a::after{color:var(--gl-top-acc)}
+.gl-m{display:inline-flex;gap:4px;margin-right:10px;vertical-align:middle;position:relative;top:-1px}
+.gl-m b{display:block;width:8px;height:8px;border-radius:50%;background:var(--gl-off);transition:transform .45s cubic-bezier(.3,1.6,.5,1),background-color .25s}
+.gl-t[data-t="1"] .gl-m b:nth-child(1),.gl-t[data-t="2"] .gl-m b:nth-child(-n+2),.gl-t[data-t="3"] .gl-m b{background:var(--gl-acc)}
+.gl tr.gl-top .gl-m b{background:var(--gl-top-off)}
+.gl tr.gl-top .gl-t[data-t="1"] .gl-m b:nth-child(1),.gl tr.gl-top .gl-t[data-t="2"] .gl-m b:nth-child(-n+2),.gl tr.gl-top .gl-t[data-t="3"] .gl-m b{background:var(--gl-top-acc)}
+.gl tr.off{display:none!important}
+@media (hover:hover){.gl tbody tr:hover{transform:translateX(6px)}.gl tbody tr:hover td a::after{transform:translateX(5px)}}
+.gl tbody tr:active{transform:scale(.985)}
+.gl-arm tbody tr{opacity:0;transform:translateY(22px)}
+.gl-arm .gl-m b{transform:scale(0)}
+.gl-arm.gl-in tbody tr{opacity:1;transform:none;transition-delay:calc(var(--i,0) * 70ms)}
+.gl-arm.gl-in .gl-m b{transform:none;transition-delay:calc(var(--i,0) * 70ms + 350ms)}
+.gl-arm.gl-in .gl-m b:nth-child(2){transition-delay:calc(var(--i,0) * 70ms + 430ms)}
+.gl-arm.gl-in .gl-m b:nth-child(3){transition-delay:calc(var(--i,0) * 70ms + 510ms)}
+.gl-arm.gl-done tbody tr,.gl-arm.gl-done .gl-m b{transition-delay:0s!important}
+@media (max-width:700px){
+.gl thead{display:none}
+.gl,.gl tbody{display:block;width:100%;margin:0}
+.gl tbody{display:grid;gap:10px}
+.gl tr{display:grid;grid-template-columns:1fr;grid-template-areas:"t" "n" "s" "o";gap:0;background:var(--gl-row);border-radius:var(--gl-r);padding:18px 18px 16px}
+.gl tr.gl-top{background:var(--gl-top);color:var(--gl-top-ink)}
+.gl tbody tr:hover td,.gl tr.gl-top td,.gl td{background:none!important;border-radius:0!important;padding:0;width:auto}
+.gl tbody tr:hover{background:var(--gl-row-hi)}.gl tbody tr.gl-top:hover{background:var(--gl-top)}
+.gl td:nth-child(1){grid-area:n;width:auto;margin-top:8px}
+.gl td:nth-child(2){grid-area:s;margin-top:14px}
+.gl td:nth-child(3){grid-area:o;margin-top:6px}
+.gl td:nth-child(4){grid-area:t;font-size:14px;white-space:nowrap}
+.gl td:nth-child(4)::before{content:none!important}
+.gl td[data-l]:not(:nth-child(4)){display:grid;grid-template-columns:5.4em 1fr;gap:10px;font-size:16px;line-height:1.4}
+.gl td[data-l]:not(:nth-child(4))::before{content:attr(data-l);color:var(--gl-muted);font-size:14px;padding-top:1px}
+.gl tr.gl-top td[data-l]::before{color:var(--gl-top-muted)}
+.gl td a{font-size:19px}
+.gl-m{gap:3px;margin-right:6px}.gl-m b{width:7px;height:7px}
+}
+@media (prefers-reduced-motion:reduce){.gl tbody tr,.gl-m b,.gl td a::after{transition:none!important}.gl-arm tbody tr{opacity:1;transform:none}.gl-arm .gl-m b{transform:none}.gl tbody tr:hover{transform:none}}
 </style>
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -413,14 +464,14 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
 <section class="glance" id="glance" aria-labelledby="h-glance"><div class="wrap">
   <h2 id="h-glance" class="rise">At a glance</h2>
   <p class="rise">Every feeder on one screen. Tap a name to jump to it.</p>
-  <table class="gl rise">
+  <table class="gl">
     <thead><tr><th scope="col">Pick</th><th scope="col">Suits</th><th scope="col">Trade-off</th><th scope="col">Tier</th></tr></thead>
     <tbody>
-      <tr><td><a href="#pk-mini">Squirrel Buster Mini</a></td><td data-l="Suits">Balconies and small yards</td><td data-l="Trade-off">More refills</td><td data-l="Tier"><span class="gl-tier">Budget</span></td></tr>
-      <tr><td><a href="#most">Squirrel Buster Standard</a><br><span class="gl-most">Our pick for most yards</span></td><td data-l="Suits">Most yards</td><td data-l="Trade-off">Fewer extras than the Plus</td><td data-l="Tier"><span class="gl-tier">Mid-range</span></td></tr>
-      <tr><td><a href="#pk-plus">Squirrel Buster Plus</a></td><td data-l="Suits">Big yards and cardinal fans</td><td data-l="Trade-off">The biggest of the three; a pole needs a separate adaptor</td><td data-l="Tier"><span class="gl-tier">Premium</span></td></tr>
-      <tr><td><a href="#pk-solution200">Squirrel Solution200</a></td><td data-l="Suits">A busy yard of small birds</td><td data-l="Trade-off">Cardinals find its perches small</td><td data-l="Tier"><span class="gl-tier">Mid-range</span></td></tr>
-      <tr><td><a href="#pk-legacy">Squirrel Buster Legacy</a></td><td data-l="Suits">A more decorative look</td><td data-l="Trade-off">Same mechanism; the extra is the look</td><td data-l="Tier"><span class="gl-tier">Premium</span></td></tr>
+      <tr><td><a href="#pk-mini">Squirrel Buster Mini</a></td><td data-l="Suits">Balconies and small yards</td><td data-l="Trade-off">More refills</td><td class="gl-t" data-t="1" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Budget</span></td></tr>
+      <tr class="gl-top"><td><a href="#most">Squirrel Buster Standard</a><span class="gl-most">Our pick for most yards</span></td><td data-l="Suits">Most yards</td><td data-l="Trade-off">Fewer extras than the Plus</td><td class="gl-t" data-t="2" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Mid-range</span></td></tr>
+      <tr><td><a href="#pk-plus">Squirrel Buster Plus</a></td><td data-l="Suits">Big yards and cardinal fans</td><td data-l="Trade-off">The biggest of the three; a pole needs a separate adaptor</td><td class="gl-t" data-t="3" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Premium</span></td></tr>
+      <tr><td><a href="#pk-solution200">Squirrel Solution200</a></td><td data-l="Suits">A busy yard of small birds</td><td data-l="Trade-off">Cardinals find its perches small</td><td class="gl-t" data-t="2" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Mid-range</span></td></tr>
+      <tr><td><a href="#pk-legacy">Squirrel Buster Legacy</a></td><td data-l="Suits">A more decorative look</td><td data-l="Trade-off">Same mechanism; the extra is the look</td><td class="gl-t" data-t="3" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Premium</span></td></tr>
     </tbody>
   </table>
 </div></section>
@@ -706,5 +757,6 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
 })();
 </script>
 <script src="kit.js" data-gc="perchseed" data-bar="Want a heads-up when a pick changes?" data-bar-btn="Email me" defer></script>
+<script>/* gl-v2 reveal */(function(){var t=document.querySelector('.gl');if(!t||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;[].forEach.call(t.querySelectorAll('tbody tr'),function(r,i){r.style.setProperty('--i',i)});t.classList.add('gl-arm');var io=new IntersectionObserver(function(e){if(!e[0].isIntersecting)return;t.classList.add('gl-in');io.disconnect();setTimeout(function(){t.classList.add('gl-done')},1400)},{threshold:.12});io.observe(t)})();</script>
 </body>
 </html>
