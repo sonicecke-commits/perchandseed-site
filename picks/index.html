@@ -808,12 +808,19 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
   });
   // packets lean toward the cursor; buttons pull toward it
   if(fine){
-    gsap.utils.toArray('.pk:not(.ghost)').forEach(function(c){
-      var t=parseFloat(getComputedStyle(c).getPropertyValue('--t'))||0;
-      c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),dx=(e.clientX-r.left)/r.width-.5,dy=(e.clientY-r.top)/r.height-.5;
-        gsap.to(c,{rotationY:dx*14,rotationX:-dy*10,rotation:0,y:-10,transformPerspective:900,duration:.4,ease:'power2.out',overwrite:'auto'})});
-      c.addEventListener('pointerleave',function(){gsap.to(c,{rotationY:0,rotationX:0,rotation:t,y:0,duration:1,ease:'elastic.out(1,.5)',overwrite:'auto'})});
-    });
+    // Hover is judged against each packet's resting (untransformed) box, so the lift and tilt
+    // can't slide the packet out from under a still mouse and make it flicker at the edges.
+    var pks=gsap.utils.toArray('.pk:not(.ghost)').map(function(c){return{c:c,t:parseFloat(getComputedStyle(c).getPropertyValue('--t'))||0,on:false}});
+    var mx=-1,my=-1,raf=0;
+    function rest(c){var o=c.offsetParent;if(!o)return null;var r=o.getBoundingClientRect(),L=r.left+o.clientLeft+c.offsetLeft,T=r.top+o.clientTop+c.offsetTop;return{l:L,t:T,r:L+c.offsetWidth,b:T+c.offsetHeight}}
+    function check(){raf=0;pks.forEach(function(k){var b=rest(k.c),inside=!!b&&mx>=b.l&&mx<=b.r&&my>=b.t&&my<=b.b;
+      if(inside){var dx=(mx-b.l)/(b.r-b.l)-.5,dy=(my-b.t)/(b.b-b.t)-.5;k.on=true;
+        gsap.to(k.c,{rotationY:dx*14,rotationX:-dy*10,rotation:0,y:-10,transformPerspective:900,duration:.4,ease:'power2.out',overwrite:'auto'})}
+      else if(k.on){k.on=false;gsap.to(k.c,{rotationY:0,rotationX:0,rotation:k.t,y:0,duration:1,ease:'elastic.out(1,.5)',overwrite:'auto'})}})}
+    function queue(){if(!raf)raf=requestAnimationFrame(check)}
+    window.addEventListener('pointermove',function(e){if(e.pointerType&&e.pointerType!=='mouse'&&e.pointerType!=='pen')return;mx=e.clientX;my=e.clientY;queue()},{passive:true});
+    window.addEventListener('scroll',function(){if(mx>=0)queue()},{passive:true});
+    document.documentElement.addEventListener('pointerleave',function(){mx=my=-1;queue()});
     gsap.utils.toArray('.btn,.start,.act,.cell-buy,.su button').forEach(function(b){
       b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.25,y:(e.clientY-r.top-r.height/2)*.4,duration:.3,ease:'power2.out'})});
       b.addEventListener('pointerleave',function(){gsap.to(b,{x:0,y:0,duration:.8,ease:'elastic.out(1,.4)'})});
