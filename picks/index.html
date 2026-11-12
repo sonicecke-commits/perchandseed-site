@@ -600,7 +600,7 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
   <div class="ticker-run"><span><i>Black-capped chickadee</i> 11 g</span><span><i>American goldfinch</i> 15 g</span><span><i>Dark-eyed junco</i> 20 g</span><span><i>Northern cardinal</i> 45 g</span><span><i>Blue jay</i> 85 g</span><span><i>Eastern gray squirrel</i> about 500 g</span><span><i>Black-capped chickadee</i> 11 g</span><span><i>American goldfinch</i> 15 g</span><span><i>Dark-eyed junco</i> 20 g</span><span><i>Northern cardinal</i> 45 g</span><span><i>Blue jay</i> 85 g</span><span><i>Eastern gray squirrel</i> about 500 g</span></div>
 </div>
 </section>
-<nav class="jump" aria-label="Jump to a section"><a href="#glance">At a glance</a><a href="#yard">By yard</a><a href="#picks">All picks</a><a href="#questions">Questions</a></nav>
+<nav class="jump" aria-label="Jump to a section"><a href="#gifts">Gifts</a><a href="#glance">At a glance</a><a href="#yard">By yard</a><a href="#picks">All picks</a><a href="#questions">Questions</a></nav>
 
 <section class="glance" id="glance" aria-labelledby="h-glance"><div class="wrap">
   <h2 id="h-glance" class="rise">At a glance</h2>
@@ -635,6 +635,52 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
       <tr><td><a href="#pk-hot-meats">Cole's Hot Meats</a></td><td data-l="Suits">Yards where squirrels still raid the feeder</td><td data-l="Trade-off">Works in most yards, not all; wear gloves when filling</td><td class="gl-t" data-t="3" data-l="Tier"><i class="gl-m" aria-hidden="true"><b></b><b></b><b></b></i><span class="gl-tier">Premium</span></td></tr>
     </tbody>
   </table>
+</div></section>
+
+<style>/* gift guide (seasonal, remove after Dec 25) */
+.gift-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gift-card{display:flex;flex-direction:column;gap:10px;padding:24px}
+.gift-card p{margin:0;font-size:16px;line-height:1.5}
+.gift-card .buy{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+.gift-card .more{font-size:15px;font-weight:600}
+.gift .after{margin-top:20px;font-size:16px}
+@media (max-width:880px){.gift-list{grid-template-columns:1fr}}
+.gift{padding:clamp(56px,7vw,104px) 0;background:var(--paper-2)}
+.gift .label{font-weight:600;font-size:var(--s-small);letter-spacing:.06em;text-transform:uppercase;color:var(--field);margin:0 0 12px}
+.gift h2{margin:0 0 18px}
+.gift .lede{font-size:var(--s-lead);max-width:44ch;margin:0 0 clamp(24px,3vw,36px)}
+.gift-card{background:var(--paper);border:1.5px solid var(--ink);border-radius:6px}
+.gift-card h3{font-size:clamp(1.5rem,1.2rem + 1vw,2rem);line-height:.95}
+.gift-card p.if{font-family:var(--display);font-weight:800;font-stretch:75%;text-transform:uppercase;font-size:var(--s-lead);line-height:1;color:var(--ink)}
+.gift-card p{color:var(--soft)}
+.gift-card .more{color:var(--ink)}
+.gift .after{color:var(--soft);max-width:none}
+</style>
+<section class="gift" id="gifts" aria-labelledby="h-gifts"><div class="wrap">
+  <p class="label rise">Gift guide</p>
+  <h2 id="h-gifts" class="rise">For the bird lover who has everything.</h2>
+  <p class="lede rise">Give them a feeder that shuts when a squirrel hangs on. Start from what you know about their yard.</p>
+  <ul class="gift-list">
+      <li class="gift-card rise">
+        <p class="if">If their yard is small</p>
+        <span class="tier">Budget pick</span><h3>Brome Squirrel Buster Mini</h3>
+        <p>Brome says it has the same closing shroud as the bigger models, in the smallest size. It holds less seed, so it needs more refills.</p>
+        <div class="buy"><a class="btn" aria-label="Check today's price: Brome Squirrel Buster Mini (paid link)" href="https://www.amazon.com/dp/B001FK81PU?tag=perchandseed-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span><a class="more" href="#pk-mini">See the trade-off</a></div>
+      </li>
+      <li class="gift-card rise">
+        <p class="if">If you don't know their yard</p>
+        <span class="tier">Mid-range pick · our pick for most yards</span><h3>Brome Squirrel Buster Standard</h3>
+        <p>The maker says a shroud drops and closes the seed ports when a squirrel hangs on. It comes in a size that suits most yards.</p>
+        <div class="buy"><a class="btn" aria-label="Check today's price: Brome Squirrel Buster Standard (paid link)" href="https://www.amazon.com/dp/B00ABGSX4S?tag=perchandseed-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span><a class="more" href="#most">See the trade-off</a></div>
+      </li>
+      <li class="gift-card rise">
+        <p class="if">If they love cardinals</p>
+        <span class="tier">Premium pick</span><h3>Brome Squirrel Buster Plus</h3>
+        <p>The maker describes about 5 lb of seed, 6 ports and a cardinal ring. A pole needs a separate adaptor.</p>
+        <div class="buy"><a class="btn" aria-label="Check today's price: Brome Squirrel Buster Plus (paid link)" href="https://www.amazon.com/dp/B0007LQ3RQ?tag=perchandseed-20" rel="sponsored nofollow noopener" target="_blank">Check today's price</a><span class="paidtag">Paid link</span><a class="more" href="#pk-plus">See the trade-off</a></div>
+      </li>
+  </ul>
+  <p class="after rise">Unsure about fit? Check the return window on the Amazon page before you buy.</p>
 </div></section>
 
 <section class="stage" id="yard" aria-labelledby="h-yard"><div class="wrap">
