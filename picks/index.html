@@ -251,7 +251,7 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
 .packs{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.6vw,40px);align-items:start}
 .pk{background-color:var(--paper);color:var(--ink);padding:10px clamp(18px,2vw,26px) clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;transform:rotate(var(--t,0deg));transition:transform .45s var(--ease);
   clip-path:polygon(0 14px,3% 0,6% 14px,9% 0,12% 14px,15% 0,18% 14px,21% 0,24% 14px,27% 0,30% 14px,33% 0,36% 14px,39% 0,42% 14px,45% 0,48% 14px,51% 0,54% 14px,57% 0,60% 14px,63% 0,66% 14px,69% 0,72% 14px,75% 0,78% 14px,81% 0,84% 14px,87% 0,90% 14px,93% 0,96% 14px,100% 0,100% 100%,0 100%)}
-.pk:hover,.pk:focus-within{transform:rotate(0deg) translateY(-6px)}
+.pk:hover,.pk:focus-within{transform:rotate(0deg) translateY(-4px)}
 .pk .arc{margin-top:8px}
 .pk .arc text{font-size:25px}
 .pk-win{position:relative;border:5px solid var(--field);background:var(--wheat)}
@@ -815,8 +815,8 @@ footer{position:relative;background:var(--ink);color:var(--paper);padding:clamp(
     function rest(c){var o=c.offsetParent;if(!o)return null;var r=o.getBoundingClientRect(),L=r.left+o.clientLeft+c.offsetLeft,T=r.top+o.clientTop+c.offsetTop;return{l:L,t:T,r:L+c.offsetWidth,b:T+c.offsetHeight}}
     function check(){raf=0;pks.forEach(function(k){var b=rest(k.c),inside=!!b&&mx>=b.l&&mx<=b.r&&my>=b.t&&my<=b.b;
       if(inside){var dx=(mx-b.l)/(b.r-b.l)-.5,dy=(my-b.t)/(b.b-b.t)-.5;k.on=true;
-        gsap.to(k.c,{rotationY:dx*14,rotationX:-dy*10,rotation:0,y:-10,transformPerspective:900,duration:.4,ease:'power2.out',overwrite:'auto'})}
-      else if(k.on){k.on=false;gsap.to(k.c,{rotationY:0,rotationX:0,rotation:k.t,y:0,duration:1,ease:'elastic.out(1,.5)',overwrite:'auto'})}})}
+        gsap.to(k.c,{rotationY:dx*7,rotationX:-dy*5,rotation:0,y:-5,transformPerspective:1200,duration:.5,ease:'power2.out',overwrite:'auto'})}
+      else if(k.on){k.on=false;gsap.to(k.c,{rotationY:0,rotationX:0,rotation:k.t,y:0,duration:.8,ease:'elastic.out(1,.85)',overwrite:'auto'})}})}
     function queue(){if(!raf)raf=requestAnimationFrame(check)}
     window.addEventListener('pointermove',function(e){if(e.pointerType&&e.pointerType!=='mouse'&&e.pointerType!=='pen')return;mx=e.clientX;my=e.clientY;queue()},{passive:true});
     window.addEventListener('scroll',function(){if(mx>=0)queue()},{passive:true});
